@@ -1,0 +1,6 @@
+.vercel/
+.stitch-mcp/
+extracted_project/
+node_modules/
+*.zip
+.DS_Store

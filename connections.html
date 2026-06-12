@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>System Connections - Bharat Loan Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .touch-target { min-height: 48px; min-width: 48px; }
+        .gold-accent-border { border-left: 4px solid #D4AF37; }
+        input:focus { outline: 2px solid #002045; border-color: transparent; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "secondary": "#735c00",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "on-secondary-fixed": "#241a00",
+                        "surface-variant": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "secondary-container": "#fed65b",
+                        "surface-dim": "#d8dadc",
+                        "on-primary-container": "#86a0cd",
+                        "error-container": "#ffdad6",
+                        "tertiary-container": "#2c3647",
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "tertiary": "#172131",
+                        "primary": "#002045",
+                        "tertiary-fixed": "#d9e3f9",
+                        "secondary-fixed": "#ffe088",
+                        "outline": "#74777f",
+                        "on-tertiary-fixed": "#121c2c",
+                        "secondary-fixed-dim": "#e9c349",
+                        "surface": "#f7f9fb",
+                        "on-background": "#191c1e",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container-high": "#e6e8ea",
+                        "on-secondary": "#ffffff",
+                        "on-primary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "background": "#f7f9fb",
+                        "outline-variant": "#c4c6cf",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-surface-variant": "#43474e",
+                        "on-secondary-container": "#745c00",
+                        "error": "#ba1a1a",
+                        "inverse-primary": "#adc7f7",
+                        "on-primary-fixed": "#001b3c",
+                        "primary-fixed-dim": "#adc7f7",
+                        "primary-container": "#1a365d",
+                        "on-tertiary-container": "#959fb3",
+                        "on-error-container": "#93000a",
+                        "surface-tint": "#455f88",
+                        "surface-container-lowest": "#ffffff",
+                        "on-surface": "#191c1e",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "on-secondary-fixed-variant": "#574500",
+                        "inverse-on-surface": "#eff1f3",
+                        "surface-bright": "#f7f9fb",
+                        "surface-container-low": "#f2f4f6",
+                        "inverse-surface": "#2d3133"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "xs": "4px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "sm": "12px",
+                        "lg": "40px",
+                        "touch-target": "48px",
+                        "base": "8px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "label-caps": ["Inter"],
+                        "headline-lg": ["Inter"],
+                        "headline-lg-mobile": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "body-md": ["Inter"],
+                        "value-display": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}],
+                        "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-32">
+<!-- Top AppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container border-b border-outline-variant">
+<div class="flex items-center gap-base">
+<button class="material-symbols-outlined text-on-primary touch-target flex items-center justify-center hover:bg-primary-fixed-dim/10 transition-opacity active:opacity-80">
+                arrow_back
+            </button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">System Connections</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs text-on-primary/80">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<span class="text-[12px] font-bold uppercase tracking-wider">Synced</span>
+</div>
+<button class="material-symbols-outlined text-on-primary touch-target flex items-center justify-center hover:bg-primary-fixed-dim/10 transition-opacity active:opacity-80">
+                cloud_done
+            </button>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-lg max-w-4xl mx-auto space-y-md">
+<!-- Breadcrumb / Context -->
+<div class="flex items-center gap-xs py-base text-on-surface-variant">
+<span class="font-label-caps text-label-caps">Settings</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+<span class="font-label-caps text-label-caps text-primary">Connections</span>
+</div>
+<!-- Integration Card -->
+<section class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md gold-accent-border shadow-sm">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-base mb-lg">
+<div class="flex items-center gap-base">
+<div class="bg-primary p-sm rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary" data-icon="hub">hub</span>
+</div>
+<div>
+<h2 class="font-headline-md text-headline-md text-primary">Antigravity Integration</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Manage external data pipeline for loan valuations</p>
+</div>
+</div>
+<div class="flex items-center gap-gutter">
+<span class="px-base py-xs bg-green-100 text-green-800 rounded-full text-[12px] font-bold uppercase tracking-widest border border-green-200">Connected</span>
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-14 h-7 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-primary"></div>
+</label>
+</div>
+</div>
+<!-- Configuration Fields -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">API KEY (ENGLISH)</label>
+<div class="relative">
+<input class="w-full h-[56px] px-base bg-surface-container-low border border-outline rounded-lg font-body-md text-body-md" readonly="" type="password" value="••••••••••••••••••••••••"/>
+<button class="absolute right-base top-1/2 -translate-y-1/2 text-primary material-symbols-outlined touch-target">visibility</button>
+</div>
+<span class="text-[12px] text-on-surface-variant/70 italic">Hindi: एपीआई कुंजी (ऑफ़लाइन सुरक्षित)</span>
+</div>
+<div class="space-y-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant block">SERVER ENDPOINT</label>
+<input class="w-full h-[56px] px-base bg-surface-container-low border border-outline rounded-lg font-body-md text-body-md" type="text" value="https://api.antigravity.v3.in/production"/>
+<span class="text-[12px] text-on-surface-variant/70 italic">Hindi: सर्वर एंडपॉइंट</span>
+</div>
+</div>
+<div class="mt-lg flex flex-col md:flex-row gap-gutter">
+<button class="flex-1 h-touch-target bg-primary text-on-primary font-label-caps text-label-caps rounded-lg flex items-center justify-center gap-base active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">wifi_tethering</span>
+                    TEST CONNECTION
+                </button>
+<button class="flex-1 h-touch-target border-2 border-primary text-primary font-label-caps text-label-caps rounded-lg flex items-center justify-center gap-base active:scale-95 transition-transform duration-150">
+<span class="material-symbols-outlined">save</span>
+                    SAVE SETTINGS
+                </button>
+</div>
+</section>
+<!-- Sync Logs -->
+<section class="bg-surface-container-highest border border-outline-variant rounded-xl p-md">
+<div class="flex items-center justify-between mb-md">
+<div class="flex items-center gap-base">
+<span class="material-symbols-outlined text-primary">history</span>
+<h3 class="font-headline-md text-headline-md text-primary">Sync Logs</h3>
+</div>
+<button class="text-primary font-label-caps text-label-caps flex items-center gap-xs">
+                    VIEW FULL LOG
+                    <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+</button>
+</div>
+<div class="space-y-base">
+<!-- Log Entry 1 -->
+<div class="bg-surface-container-lowest p-base rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<div>
+<p class="font-body-md text-body-md font-bold text-primary">Valuation Batch Sync</p>
+<p class="text-[12px] text-on-surface-variant">24 Oct 2023, 14:32:05</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-[12px] text-green-700">SUCCESS</span>
+<p class="text-[10px] text-on-surface-variant">12 records updated</p>
+</div>
+</div>
+<!-- Log Entry 2 -->
+<div class="bg-surface-container-lowest p-base rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-error"></div>
+<div>
+<p class="font-body-md text-body-md font-bold text-primary">Field Agent Uplink</p>
+<p class="text-[12px] text-on-surface-variant">24 Oct 2023, 11:15:42</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-[12px] text-error">FAILED</span>
+<p class="text-[10px] text-on-surface-variant">Timeout: Error 504</p>
+</div>
+</div>
+<!-- Log Entry 3 -->
+<div class="bg-surface-container-lowest p-base rounded-lg border border-outline-variant flex items-center justify-between">
+<div class="flex items-center gap-base">
+<div class="w-2 h-2 rounded-full bg-green-500"></div>
+<div>
+<p class="font-body-md text-body-md font-bold text-primary">Master Data Pull</p>
+<p class="text-[12px] text-on-surface-variant">23 Oct 2023, 18:00:00</p>
+</div>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-[12px] text-green-700">SUCCESS</span>
+<p class="text-[10px] text-on-surface-variant">System state: Nominal</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Help Section -->
+<div class="bg-tertiary-fixed border border-outline-variant rounded-xl p-md flex gap-md">
+<span class="material-symbols-outlined text-primary-container text-[32px]">info</span>
+<div>
+<h4 class="font-label-caps text-label-caps text-primary-container">Technical Support</h4>
+<p class="font-body-md text-body-md text-on-tertiary-fixed-variant">If you are experiencing persistent synchronization errors, please contact the regional IT head or use the bilingual help center button in the side navigation.</p>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Shell (Mobile Only View) -->
+<nav class="md:hidden fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95 duration-150" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px] uppercase">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95 duration-150" href="valuation.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-[10px] uppercase">Valuation</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-base transition-transform active:scale-95 duration-150" href="connections.html">
+<span class="material-symbols-outlined" data-icon="sync">sync</span>
+<span class="font-label-caps text-[10px] uppercase">Sync</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95 duration-150" href="reports.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-[10px] uppercase">Reports</span>
+</a>
+</nav>
+<script>
+        // Micro-interaction for Test Connection
+        const testBtn = document.querySelector('button:has(.material-symbols-outlined:contains("wifi_tethering"))');
+        if(testBtn) {
+            testBtn.addEventListener('click', function() {
+                const icon = this.querySelector('.material-symbols-outlined');
+                const originalText = this.innerText;
+                this.innerHTML = `<span class="material-symbols-outlined animate-spin">sync</span> TESTING...`;
+                this.classList.add('opacity-80');
+                
+                setTimeout(() => {
+                    this.innerHTML = `<span class="material-symbols-outlined text-green-400">check_circle</span> CONNECTION OK`;
+                    this.classList.replace('bg-primary', 'bg-green-700');
+                    setTimeout(() => {
+                        this.innerHTML = `<span class="material-symbols-outlined">wifi_tethering</span> TEST CONNECTION`;
+                        this.classList.replace('bg-green-700', 'bg-primary');
+                        this.classList.remove('opacity-80');
+                    }, 2000);
+                }, 1500);
+            });
+        }
+
+        // Custom selector for Material Symbols content
+        window.addEventListener('DOMContentLoaded', () => {
+           // Small fix for non-standard selector in micro-interaction script
+        });
+    </script>
+</body></html>

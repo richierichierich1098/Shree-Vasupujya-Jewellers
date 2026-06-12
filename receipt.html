@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Income Receipt & Repayment - Bharat Loan Manager</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#3d4759",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1a365d",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-variant": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline": "#74777f",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#191c1e",
+                    "on-tertiary-fixed": "#121c2c",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-primary-container": "#86a0cd",
+                    "primary": "#002045",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#735c00",
+                    "tertiary-fixed": "#d9e3f9",
+                    "surface-tint": "#455f88",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474e",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "tertiary-container": "#2c3647",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed-dim": "#bdc7dc",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#959fb3",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#001b3c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-container": "#fed65b",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary": "#172131",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#adc7f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "touch-target": "48px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "value-display": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+    <style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+    </style>
+</head>
+<body class="font-body-md text-on-surface pb-[100px]">
+    <!-- TopAppBar -->
+    <header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-b border-outline-variant shadow-sm">
+        <div class="flex items-center gap-base">
+            <button onclick="goBack()" class="material-symbols-outlined p-xs hover:bg-primary-fixed-dim/10 rounded-full transition-opacity active:opacity-80 flex items-center justify-center" title="Go Back">arrow_back</button>
+            <h1 class="font-headline-md text-headline-md font-bold text-on-primary">Bharat Loan Manager</h1>
+        </div>
+        <div class="flex items-center gap-xs">
+            <span class="font-label-caps text-label-caps mr-xs hidden sm:block">Synced</span>
+            <span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+        </div>
+    </header>
+
+    <main class="pt-[64px] px-margin-mobile max-w-2xl mx-auto">
+        <!-- Screen Title Section -->
+        <section class="py-md">
+            <h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-xs">Income Receipt Module</h2>
+            <p class="text-on-surface-variant font-body-md">Record customer repayments (Principal, Interest, or both) and update customer ledgers instantly.</p>
+        </section>
+
+        <!-- Form Container -->
+        <section class="bg-white border border-outline-variant p-md rounded-xl shadow-sm space-y-md mb-md">
+            <h3 class="font-headline-md text-headline-md text-primary border-b border-outline-variant pb-xs flex items-center gap-xs">
+                <span class="material-symbols-outlined text-secondary">receipt_long</span>
+                <span>Repayment Receipt / आय रसीद</span>
+            </h3>
+
+            <!-- Customer Selection -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="customerSelect">
+                    Select Customer / ग्राहक का नाम
+                </label>
+                <select id="customerSelect" onchange="onCustomerChange()" class="w-full h-[56px] border-2 border-outline rounded-xl focus:border-primary focus:ring-0 text-body-md bg-white">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Loan ID Selection -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="loanSelect">
+                    Select Account / Loan ID / ऋण खाता संख्या
+                </label>
+                <select id="loanSelect" onchange="onLoanChange()" class="w-full h-[56px] border-2 border-outline rounded-xl focus:border-primary focus:ring-0 text-body-md bg-white">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+
+            <!-- Outstanding Balances Summary Card -->
+            <div id="outstandingCard" class="bg-surface-container-low border border-outline-variant rounded-xl p-md">
+                <div class="flex flex-col sm:flex-row sm:justify-between sm:items-center gap-xs mb-xs">
+                    <span class="font-label-caps text-label-caps text-secondary">CURRENT OUTSTANDING STATUS</span>
+                    <span id="loanTakenDate" class="text-xs text-on-surface-variant font-bold font-sans bg-white px-2 py-0.5 rounded border border-outline-variant/40">Disbursed: -</span>
+                </div>
+                <div class="grid grid-cols-3 gap-xs text-center border-t border-outline-variant/30 pt-sm mt-xs">
+                    <div>
+                        <p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Principal / मूल</p>
+                        <p id="outPrincipal" class="font-value-display text-sm text-primary font-bold">₹ 0.00</p>
+                    </div>
+                    <div>
+                        <p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Interest / ब्याज</p>
+                        <p id="outInterest" class="font-value-display text-sm text-primary font-bold">₹ 0.00</p>
+                    </div>
+                    <div class="border-l border-outline-variant/30">
+                        <p class="text-[10px] text-on-surface-variant uppercase font-bold tracking-wider">Net Total / कुल</p>
+                        <p id="outTotal" class="font-value-display text-sm text-secondary font-bold">₹ 0.00</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Receipt Meta Fields (Date & Vch No) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant" for="vchNo">
+                        Receipt Voucher No.
+                    </label>
+                    <input class="w-full h-[56px] border-2 border-outline-variant bg-surface-container-low text-on-surface-variant rounded-xl font-mono text-body-md font-bold px-md" id="vchNo" readonly type="text" value="RCT-021"/>
+                </div>
+
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant" for="repayDate">
+                        Payment Received Date
+                    </label>
+                    <input class="w-full h-[56px] border-2 border-outline rounded-xl focus:border-primary focus:ring-0 font-body-md px-md bg-white" id="repayDate" type="date"/>
+                </div>
+            </div>
+
+            <!-- Split Payments Input -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-md pt-xs">
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant" for="principalPaid">
+                        Principal Repayment (₹) / मूल भुगतान
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-md top-1/2 -translate-y-1/2 font-bold text-primary">₹</span>
+                        <input class="w-full h-[56px] pl-[40px] pr-md border-2 border-outline rounded-xl focus:border-primary focus:ring-0 font-value-display text-base bg-white" id="principalPaid" placeholder="0.00" type="number" step="any" min="0" oninput="calculateTotal()"/>
+                    </div>
+                </div>
+
+                <div class="flex flex-col gap-xs">
+                    <label class="font-label-caps text-label-caps text-on-surface-variant" for="interestPaid">
+                        Interest Repayment (₹) / ब्याज भुगतान
+                    </label>
+                    <div class="relative">
+                        <span class="absolute left-md top-1/2 -translate-y-1/2 font-bold text-primary">₹</span>
+                        <input class="w-full h-[56px] pl-[40px] pr-md border-2 border-outline rounded-xl focus:border-primary focus:ring-0 font-value-display text-base bg-white" id="interestPaid" placeholder="0.00" type="number" step="any" min="0" oninput="calculateTotal()"/>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Total Payment Received Display -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="totalPaid">
+                    Total Amount Received (₹) / कुल प्राप्त राशि
+                </label>
+                <div class="relative">
+                    <span class="absolute left-md top-1/2 -translate-y-1/2 font-bold text-secondary">₹</span>
+                    <input class="w-full h-[56px] pl-[40px] pr-md border-2 border-outline rounded-xl font-value-display text-value-display font-bold bg-white" id="totalPaid" type="number" step="any" min="0" placeholder="0.00" oninput="allocateTotal()"/>
+                </div>
+            </div>
+
+            <!-- Payment Mode Selection -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="payMode">
+                    Payment Mode / भुगतान का तरीका
+                </label>
+                <select id="payMode" class="w-full h-[56px] border-2 border-outline rounded-xl focus:border-primary focus:ring-0 text-body-md bg-white">
+                    <option value="Cash">Cash (नकद)</option>
+                    <option value="UPI">UPI (GooglePay/PhonePe)</option>
+                    <option value="Bank Transfer">Bank Transfer (IMPS/NEFT)</option>
+                </select>
+            </div>
+
+            <!-- Remarks -->
+            <div class="flex flex-col gap-xs">
+                <label class="font-label-caps text-label-caps text-on-surface-variant" for="remarks">
+                    Remarks / टिप्पणी (Optional)
+                </label>
+                <input id="remarks" class="w-full h-[56px] border-2 border-outline rounded-xl focus:border-primary focus:ring-0 text-body-md px-md bg-white" placeholder="Enter notes..." type="text"/>
+            </div>
+        </section>
+
+        <!-- Form Actions -->
+        <div class="space-y-sm">
+            <button onclick="postRepayment()" class="w-full h-[64px] bg-primary text-on-primary rounded-xl font-headline-md flex items-center justify-center gap-sm shadow-lg hover:opacity-90 active:scale-95 transition-all" id="postBtn">
+                <span class="material-symbols-outlined">check_circle</span>
+                <span>Post Income Receipt &amp; Update Ledger</span>
+            </button>
+            
+            <button onclick="window.location.href='dashboard.html'" class="w-full h-[56px] border-2 border-outline text-on-surface rounded-xl font-headline-md flex items-center justify-center gap-sm bg-white hover:bg-surface transition-all">
+                Cancel
+            </button>
+        </div>
+    </main>
+
+    <!-- BottomNavBar -->
+    <nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant">
+        <a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="dashboard.html">
+            <span class="material-symbols-outlined">dashboard</span>
+            <span class="font-label-caps text-label-caps">Dashboard</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="kyc.html">
+            <span class="material-symbols-outlined">person_add</span>
+            <span class="font-label-caps text-label-caps">Customers</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="valuation.html">
+            <span class="material-symbols-outlined">payments</span>
+            <span class="font-label-caps text-label-caps">Valuation</span>
+        </a>
+        <a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="reports.html">
+            <span class="material-symbols-outlined">analytics</span>
+            <span class="font-label-caps text-label-caps">Reports</span>
+        </a>
+    </nav>
+
+    <script>
+        // Initial Database Fallback
+        const defaultLedgerDatabase = {
+            "Ramesh Kumar": {
+                "loans": {
+                    "LN-2026-001": [
+                        { date: "01-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Necklace)", vchType: "Payment", vchNo: "PMT-001", debit: 246750, credit: 0 },
+                        { date: "01-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-012", debit: 3701, credit: 0 },
+                        { date: "10-May-2026", particulars: "By Cash Repayment (Part Principal + Interest)", vchType: "Receipt", vchNo: "RCT-005", debit: 0, credit: 15000 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-033", debit: 3532, credit: 0 }
+                    ],
+                    "LN-2026-006": [
+                        { date: "15-May-2026", particulars: "To Opening Balance / Disbursal (Gold Rings)", vchType: "Payment", vchNo: "PMT-024", debit: 95000, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-038", debit: 713, credit: 0 },
+                        { date: "25-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-019", debit: 0, credit: 5000 }
+                    ]
+                }
+            },
+            "Sita Devi": {
+                "loans": {
+                    "LN-2026-002": [
+                        { date: "10-May-2026", particulars: "To Opening Balance / Disbursal (Silver Anklets)", vchType: "Payment", vchNo: "PMT-012", debit: 8100, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-034", debit: 122, credit: 0 }
+                    ]
+                }
+            },
+            "Harish Verma": {
+                "loans": {
+                    "LN-2026-003": [] // Pending approval - no transactions
+                }
+            },
+            "Kamla Devi": {
+                "loans": {
+                    "LN-2026-004": [
+                        { date: "10-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Ring)", vchType: "Payment", vchNo: "PMT-004", debit: 60400, credit: 0 },
+                        { date: "10-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-018", debit: 906, credit: 0 },
+                        { date: "15-May-2026", particulars: "By Part Cash Repayment", vchType: "Receipt", vchNo: "RCT-008", debit: 0, credit: 10000 }
+                    ]
+                }
+            },
+            "Rajesh Sharma": {
+                "loans": {
+                    "LN-2026-005": [
+                        { date: "01-May-2026", particulars: "To Opening Balance / Disbursal (Silver Plate)", vchType: "Payment", vchNo: "PMT-018", debit: 34200, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-035", debit: 513, credit: 0 },
+                        { date: "28-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-020", debit: 0, credit: 2000 }
+                    ]
+                }
+            }
+        };
+
+        let ledgerDatabase = {};
+        let currentOutstandingPrincipal = 0;
+        let currentAccruedInterest = 0;
+
+        // Load Database
+        function loadDatabase() {
+            if (localStorage.getItem('ledgerDatabase')) {
+                try {
+                    let db = JSON.parse(localStorage.getItem('ledgerDatabase'));
+                    let updated = false;
+                    
+                    // Migrate RCT-019 date to past
+                    if (db["Ramesh Kumar"] && db["Ramesh Kumar"].loans && db["Ramesh Kumar"].loans["LN-2026-006"]) {
+                        db["Ramesh Kumar"].loans["LN-2026-006"].forEach(tx => {
+                            if (tx.vchNo === "RCT-019" && tx.date === "02-Jun-2026") {
+                                tx.date = "25-May-2026";
+                                updated = true;
+                            }
+                        });
+                    }
+                    
+                    // Migrate RCT-020 date to past
+                    if (db["Rajesh Sharma"] && db["Rajesh Sharma"].loans && db["Rajesh Sharma"].loans["LN-2026-005"]) {
+                        db["Rajesh Sharma"].loans["LN-2026-005"].forEach(tx => {
+                            if (tx.vchNo === "RCT-020" && tx.date === "02-Jun-2026") {
+                                tx.date = "28-May-2026";
+                                updated = true;
+                            }
+                        });
+                    }
+                    
+                    if (updated) {
+                        localStorage.setItem('ledgerDatabase', JSON.stringify(db));
+                    }
+                    ledgerDatabase = db;
+                } catch (e) {
+                    console.error("Error reading ledgerDatabase", e);
+                    ledgerDatabase = defaultLedgerDatabase;
+                }
+            } else {
+                ledgerDatabase = defaultLedgerDatabase;
+                localStorage.setItem('ledgerDatabase', JSON.stringify(ledgerDatabase));
+            }
+        }
+
+        // Initialize Form on load
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDatabase();
+            
+            // Set date to today
+            const today = new Date();
+            const dateInput = document.getElementById('repayDate');
+            dateInput.value = today.toISOString().split('T')[0];
+
+            // Add change listener to date input to dynamically recalculate interest
+            dateInput.addEventListener('change', onLoanChange);
+
+            // Generate Voucher No
+            generateVoucherNo();
+
+            // Populate Customers dropdown
+            populateCustomers();
+        });
+
+        function generateVoucherNo() {
+            let receiptCount = 0;
+            Object.keys(ledgerDatabase).forEach(custName => {
+                if (ledgerDatabase[custName].loans) {
+                    Object.keys(ledgerDatabase[custName].loans).forEach(loanId => {
+                        ledgerDatabase[custName].loans[loanId].forEach(tx => {
+                            if (tx.vchType === "Receipt") {
+                                receiptCount++;
+                            }
+                        });
+                    });
+                }
+            });
+            const vchInput = document.getElementById('vchNo');
+            vchInput.value = "RCT-" + String(receiptCount + 1).padStart(3, '0');
+        }
+
+        function populateCustomers() {
+            const customerSelect = document.getElementById('customerSelect');
+            customerSelect.innerHTML = '';
+
+            // Get customers that have active loans (or all customers)
+            const customerNames = Object.keys(ledgerDatabase);
+            customerNames.forEach((name, idx) => {
+                const opt = document.createElement('option');
+                opt.value = name;
+                opt.textContent = name;
+                customerSelect.appendChild(opt);
+            });
+
+            onCustomerChange();
+        }
+
+        function onCustomerChange() {
+            const customerSelect = document.getElementById('customerSelect');
+            const loanSelect = document.getElementById('loanSelect');
+            loanSelect.innerHTML = '';
+
+            const selectedName = customerSelect.value;
+            const customer = ledgerDatabase[selectedName];
+
+            if (customer && customer.loans) {
+                const loanIds = Object.keys(customer.loans);
+                
+                loanIds.forEach(id => {
+                    const opt = document.createElement('option');
+                    opt.value = id;
+                    opt.textContent = id;
+                    loanSelect.appendChild(opt);
+                });
+
+                if (loanIds.length === 0) {
+                    const opt = document.createElement('option');
+                    opt.value = "";
+                    opt.textContent = "No loans outstanding";
+                    loanSelect.appendChild(opt);
+                }
+            }
+            onLoanChange();
+        }
+
+        // Outstanding calculator
+        function onLoanChange() {
+            const customerSelect = document.getElementById('customerSelect').value;
+            const loanSelect = document.getElementById('loanSelect').value;
+            const paymentDateStr = document.getElementById('repayDate').value;
+
+            if (!loanSelect) {
+                document.getElementById('outPrincipal').textContent = "₹ 0.00";
+                document.getElementById('outInterest').textContent = "₹ 0.00";
+                document.getElementById('outTotal').textContent = "₹ 0.00";
+                document.getElementById('loanTakenDate').textContent = "Disbursed: -";
+                return;
+            }
+
+            const txList = ledgerDatabase[customerSelect].loans[loanSelect];
+            
+            // Get Disbursal (Loan Taken) Date
+            const disbursalTx = txList.find(tx => tx.vchType === "Payment");
+            const loanDate = disbursalTx ? disbursalTx.date : "Pending Approval";
+            document.getElementById('loanTakenDate').textContent = "Disbursed: " + loanDate;
+
+            // If pending or no disbursal, outstanding is zero
+            if (!disbursalTx) {
+                document.getElementById('outPrincipal').textContent = "₹ 0.00";
+                document.getElementById('outInterest').textContent = "₹ 0.00";
+                document.getElementById('outTotal').textContent = "₹ 0.00";
+                document.getElementById('principalPaid').value = "0.00";
+                document.getElementById('interestPaid').value = "0.00";
+                calculateTotal();
+                return;
+            }
+
+            // Parse payment date
+            const paymentDate = new Date(paymentDateStr); // e.g. "2026-06-02"
+
+            // Filter out static interest accrual journals to recalculate dynamically
+            let cleanTx = txList.filter(tx => tx.vchType !== "Journal" && !tx.particulars.toLowerCase().includes("interest a/c"));
+            
+            let history = cleanTx.map(tx => {
+                return {
+                    date: parseIndianDate(tx.date),
+                    debit: tx.debit,
+                    credit: tx.credit,
+                    vchType: tx.vchType
+                };
+            });
+            
+            // Sort history by date
+            history.sort((a, b) => a.date - b.date);
+            
+            let outstandingPrincipal = 0;
+            let accruedInterest = 0;
+            let lastDate = history[0].date;
+            
+            // Daily interest rate: 1.5% per month / 30 = 0.05% per day
+            const DAILY_RATE = 0.015 / 30; 
+            
+            history.forEach(tx => {
+                const diffTime = tx.date - lastDate;
+                const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+                
+                if (diffDays > 0) {
+                    accruedInterest += outstandingPrincipal * DAILY_RATE * diffDays;
+                }
+                
+                if (tx.debit > 0) {
+                    outstandingPrincipal += tx.debit;
+                }
+                
+                if (tx.credit > 0) {
+                    if (tx.credit >= accruedInterest) {
+                        const remainingCredit = tx.credit - accruedInterest;
+                        accruedInterest = 0;
+                        outstandingPrincipal = Math.max(0, outstandingPrincipal - remainingCredit);
+                    } else {
+                        accruedInterest -= tx.credit;
+                    }
+                }
+                
+                lastDate = tx.date;
+            });
+            
+            // Accrue interest from last transaction date to selected payment date
+            if (paymentDate > lastDate) {
+                const diffTime = paymentDate - lastDate;
+                const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+                if (diffDays > 0) {
+                    accruedInterest += outstandingPrincipal * DAILY_RATE * diffDays;
+                }
+            }
+            
+            currentOutstandingPrincipal = outstandingPrincipal;
+            currentAccruedInterest = accruedInterest;
+
+            // Round interest amount to nearest whole integer
+            accruedInterest = Math.round(accruedInterest);
+            
+            currentOutstandingPrincipal = outstandingPrincipal;
+            currentAccruedInterest = accruedInterest;
+
+            // Format and display
+            document.getElementById('outPrincipal').textContent = formatDisplayCurrency(outstandingPrincipal);
+            document.getElementById('outInterest').textContent = formatDisplayCurrency(accruedInterest);
+            document.getElementById('outTotal').textContent = formatDisplayCurrency(outstandingPrincipal + accruedInterest);
+
+            // Pre-fill inputs with outstanding to make it easy
+            document.getElementById('principalPaid').value = outstandingPrincipal.toFixed(2);
+            document.getElementById('interestPaid').value = accruedInterest;
+            calculateTotal();
+        }
+
+        function calculateTotal() {
+            const principalInput = parseFloat(document.getElementById('principalPaid').value) || 0;
+            // Round manual entries for interest Paid on change
+            const interestInput = Math.round(parseFloat(document.getElementById('interestPaid').value) || 0);
+            document.getElementById('interestPaid').value = interestInput;
+            
+            const total = principalInput + interestInput;
+            document.getElementById('totalPaid').value = total.toFixed(2);
+        }
+
+        function allocateTotal() {
+            const totalPaidInput = parseFloat(document.getElementById('totalPaid').value) || 0;
+            
+            let interestAllocated = 0;
+            let principalAllocated = 0;
+            
+            if (totalPaidInput >= currentAccruedInterest) {
+                interestAllocated = currentAccruedInterest;
+                principalAllocated = totalPaidInput - currentAccruedInterest;
+            } else {
+                interestAllocated = Math.round(totalPaidInput);
+                principalAllocated = 0;
+            }
+            
+            document.getElementById('interestPaid').value = interestAllocated;
+            document.getElementById('principalPaid').value = principalAllocated.toFixed(2);
+        }
+
+        function formatDisplayCurrency(amount) {
+            return '₹ ' + amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function parseIndianDate(dateStr) {
+            const months = {
+                "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5,
+                "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
+            };
+            const parts = dateStr.split('-');
+            const day = parseInt(parts[0], 10);
+            const month = months[parts[1]];
+            const year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        }
+
+        function parseInputDate(dateStr) {
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const parts = dateStr.split('-');
+            const year = parts[0];
+            const month = months[parseInt(parts[1], 10) - 1];
+            const day = String(parseInt(parts[2], 10)).padStart(2, '0');
+            return `${day}-${month}-${year}`;
+        }
+
+        function postRepayment() {
+            const customerSelect = document.getElementById('customerSelect').value;
+            const loanSelect = document.getElementById('loanSelect').value;
+            
+            if (!loanSelect) {
+                alert("Please select a valid Account / Loan ID.");
+                return;
+            }
+
+            const principalInput = parseFloat(document.getElementById('principalPaid').value) || 0;
+            const interestInput = parseFloat(document.getElementById('interestPaid').value) || 0;
+            const total = principalInput + interestInput;
+
+            if (total <= 0) {
+                alert("Please enter a repayment amount (Principal or Interest must be greater than zero).");
+                return;
+            }
+
+            const vchNo = document.getElementById('vchNo').value;
+            const rawDate = document.getElementById('repayDate').value;
+            if (!rawDate) {
+                alert("Please select a payment received date.");
+                return;
+            }
+
+            const payMode = document.getElementById('payMode').value;
+            const remarksText = document.getElementById('remarks').value;
+            const formattedDate = parseInputDate(rawDate);
+
+            // Construct particular details
+            let splitDetails = [];
+            if (principalInput > 0) splitDetails.push(`Principal: ₹${principalInput.toLocaleString('en-IN')}`);
+            if (interestInput > 0) splitDetails.push(`Interest: ₹${interestInput.toLocaleString('en-IN')}`);
+            let detailsStr = "By Repayment (" + splitDetails.join(", ") + `) [Mode: ${payMode}]`;
+            if (remarksText) detailsStr += ` - ${remarksText}`;
+
+            const newTx = {
+                date: formattedDate,
+                particulars: detailsStr,
+                vchType: "Receipt",
+                vchNo: vchNo,
+                debit: 0,
+                credit: total
+            };
+
+            // Post to DB
+            loadDatabase(); // refresh to get any race changes
+            ledgerDatabase[customerSelect].loans[loanSelect].push(newTx);
+            localStorage.setItem('ledgerDatabase', JSON.stringify(ledgerDatabase));
+
+            // Success animation/alert and redirect
+            const postBtn = document.getElementById('postBtn');
+            postBtn.innerHTML = `
+                <svg class="animate-spin h-6 w-6 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                Posting Repayment...
+            `;
+            postBtn.disabled = true;
+
+            setTimeout(() => {
+                alert(`Repayment Posted Successfully!\nReceipt Voucher: ${vchNo}\nAmount: ₹${total.toLocaleString('en-IN', { minimumFractionDigits: 2 })}`);
+                
+                // Redirect back to reports, automatically opening Ramesh's ledger modal
+                window.location.href = `reports.html?tab=accounting&customer=${encodeURIComponent(customerSelect)}&loanId=${encodeURIComponent(loanSelect)}`;
+            }, 1500);
+        }
+
+        function goBack() {
+            if (document.referrer && document.referrer.includes('reports.html')) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = 'reports.html?tab=accounting';
+            }
+        }
+
+        // Keydown listener for Esc and Backspace keys to go back
+        document.addEventListener('keydown', (e) => {
+            const activeEl = document.activeElement;
+            const isTyping = activeEl && (
+                activeEl.tagName === 'INPUT' || 
+                activeEl.tagName === 'TEXTAREA' || 
+                activeEl.isContentEditable
+            );
+            
+            if (e.key === "Escape") {
+                e.preventDefault();
+                goBack();
+            } else if (e.key === "Backspace" && !isTyping) {
+                e.preventDefault();
+                goBack();
+            }
+        });
+    </script>
+</body>
+</html>

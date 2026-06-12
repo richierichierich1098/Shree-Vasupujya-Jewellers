@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Loan Terms &amp; Disbursal - Bharat Loan Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#3d4759",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1a365d",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-variant": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline": "#74777f",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#191c1e",
+                    "on-tertiary-fixed": "#121c2c",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-primary-container": "#86a0cd",
+                    "primary": "#002045",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#735c00",
+                    "tertiary-fixed": "#d9e3f9",
+                    "surface-tint": "#455f88",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474e",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "tertiary-container": "#2c3647",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed-dim": "#bdc7dc",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#959fb3",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#001b3c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-container": "#fed65b",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary": "#172131",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#adc7f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "touch-target": "48px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "value-display": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+        }
+        body {
+            background-color: #F8FAFC;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="font-body-md text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container text-on-primary dark:text-on-primary-container border-b border-outline-variant">
+<div class="flex items-center gap-base">
+<button onclick="goBack()" class="material-symbols-outlined p-xs hover:bg-primary-fixed-dim/10 rounded-full transition-opacity active:opacity-80 flex items-center justify-center" title="Go Back">arrow_back</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Bharat Loan Manager</h1>
+</div>
+<div class="flex items-center gap-xs">
+<span class="font-label-caps text-label-caps mr-xs hidden sm:block">Synced</span>
+<span class="material-symbols-outlined text-on-primary" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+</div>
+</header>
+<main class="pt-[64px] pb-[100px] px-margin-mobile max-w-2xl mx-auto">
+<!-- Screen Title Section -->
+<section class="py-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary mb-xs">Disbursal Confirmation</h2>
+<p id="disbursalSubtitle" class="text-on-surface-variant font-body-md">Finalize the loan terms and confirm cash handover to the customer.</p>
+</section>
+<!-- Ornament Valuation Summary Card -->
+<div class="bg-surface-container-lowest border-l-[6px] border-[#D4AF37] rounded-xl shadow-sm p-md mb-md border-y border-r border-outline-variant">
+<div class="flex justify-between items-start mb-sm">
+<div>
+<span class="font-label-caps text-label-caps text-secondary uppercase">Valuation Result</span>
+<h3 id="ornamentType" class="font-headline-md text-headline-md mt-xs">Gold Ornament (22K)</h3>
+</div>
+<span class="material-symbols-outlined text-secondary" style="font-variation-settings: 'FILL' 1;">payments</span>
+</div>
+<div class="grid grid-cols-2 gap-sm">
+<div>
+<p class="text-on-surface-variant text-xs uppercase font-bold tracking-wider">Gross Weight</p>
+<p id="grossWeight" class="font-value-display text-value-display">24.50g</p>
+</div>
+<div>
+<p class="text-on-surface-variant text-xs uppercase font-bold tracking-wider">Net Gold (Est.)</p>
+<p id="netWeight" class="font-value-display text-value-display">22.15g</p>
+</div>
+<div class="col-span-2 pt-xs border-t border-outline-variant">
+<p class="text-on-surface-variant text-xs uppercase font-bold tracking-wider">Max Eligible Loan</p>
+<p id="maxLoan" class="font-value-display text-value-display text-primary">₹ 1,12,400</p>
+</div>
+</div>
+</div>
+<!-- Input Section -->
+<section class="space-y-md">
+<!-- Principal Input -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface-variant" for="principal">
+                    Disbursed Cash Principal Amount
+                </label>
+<div class="relative">
+<span class="absolute left-md top-1/2 -translate-y-1/2 font-bold text-primary">₹</span>
+<input class="w-full h-[56px] pl-[40px] pr-md border-2 border-outline rounded-xl focus:border-primary focus:ring-0 font-value-display text-value-display bg-white" id="principal" placeholder="0.00" step="any" type="number" value="112400"/>
+</div>
+<p class="text-sm text-on-surface-variant mt-xs">वितरित नकद मूल राशि (Principal Amount in Cash)</p>
+</div>
+<!-- Fixed Rate Display -->
+<div class="p-md bg-surface-container-low rounded-xl border border-outline-variant flex items-center justify-between">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant">Interest Rate (Fixed)</p>
+<p class="font-body-lg text-body-lg font-bold">2% per month</p>
+<p class="text-xs text-on-surface-variant">निश्चित मासिक ब्याज दर (Monthly Interest Rate)</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim bg-primary rounded-full p-xs">percent</span>
+</div>
+<!-- Accrual Logic Note -->
+<div class="p-sm bg-tertiary-container/10 border border-tertiary-container/20 rounded-xl flex gap-sm">
+<span class="material-symbols-outlined text-on-tertiary-container mt-xs">info</span>
+<div>
+<p class="font-label-caps text-label-caps text-tertiary font-bold">Interest Accrual: Daily</p>
+<code class="block font-mono text-xs p-xs bg-white/50 rounded mt-xs text-on-tertiary-fixed-variant">
+                        [(Principal * Monthly Rate) / 30]
+                    </code>
+<p class="text-xs text-on-tertiary-container mt-xs">ब्याज गणना: दैनिक (Daily Interest Calculation)</p>
+</div>
+</div>
+<!-- Agreement Checkbox -->
+<label class="flex items-start gap-md p-md bg-white border border-outline-variant rounded-xl cursor-pointer select-none transition-colors hover:bg-surface active:scale-[0.99]" id="agreement-container">
+<div class="relative flex items-center mt-1">
+<input class="peer h-6 w-6 rounded border-2 border-outline text-primary focus:ring-0 cursor-pointer" id="agreement" type="checkbox"/>
+</div>
+<div>
+<p class="font-body-md font-bold text-on-surface">Customer Agreement &amp; Physical Receipt Acknowledgment</p>
+<p class="text-sm text-on-surface-variant mt-xs">ग्राहक समझौता और भौतिक रसीद पावती। The customer confirms receipt of cash and agrees to the daily interest terms stated above.</p>
+</div>
+</label>
+</section>
+<!-- Primary Action -->
+<div class="mt-lg">
+<button class="w-full h-[64px] bg-primary text-on-primary rounded-xl font-headline-md flex items-center justify-center gap-sm shadow-lg hover:opacity-90 active:scale-95 transition-all disabled:opacity-50 disabled:grayscale disabled:pointer-events-none" disabled="" id="disburse-btn">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                Disburse &amp; Generate Digital Receipt
+            </button>
+<p class="text-center text-xs text-on-surface-variant mt-md flex items-center justify-center gap-xs">
+<span class="material-symbols-outlined text-[14px]">lock</span>
+                Securely encrypted session • Agent ID: 8821
+            </p>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="dashboard.html">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="kyc.html">
+<span class="material-symbols-outlined">person_add</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-base scale-95 transition-transform" href="valuation.html">
+<span class="material-symbols-outlined">payments</span>
+<span class="font-label-caps text-label-caps">Valuation</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-transform active:scale-95" href="reports.html">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<script>
+        // Default Loan Registry Database with all 6 loans and their specs
+        const defaultLoanRegistry = {
+            "LN-2026-001": {
+                customerName: "Ramesh Kumar",
+                mobile: "98765 43210",
+                assetName: "Gold Necklace (22K)",
+                grossWeight: "45.50g",
+                netWeight: "41.80g",
+                eligibleLimit: 246750,
+                status: "Disbursed",
+                disbursedAmount: 246750,
+                disbursalDate: "01-Apr-2026"
+            },
+            "LN-2026-002": {
+                customerName: "Sita Devi",
+                mobile: "94140 12345",
+                assetName: "Silver Anklets (92.5%)",
+                grossWeight: "120.00g",
+                netWeight: "111.00g",
+                eligibleLimit: 8100,
+                status: "Disbursed",
+                disbursedAmount: 8100,
+                disbursalDate: "10-May-2026"
+            },
+            "LN-2026-003": {
+                customerName: "Harish Verma",
+                mobile: "70141 98765",
+                assetName: "Gold Bangles (22K)",
+                grossWeight: "82.30g",
+                netWeight: "75.70g",
+                eligibleLimit: 447000,
+                status: "Pending Approval",
+                disbursedAmount: 0,
+                disbursalDate: "02-Jun-2026"
+            },
+            "LN-2026-004": {
+                customerName: "Kamla Devi",
+                mobile: "88902 54321",
+                assetName: "Gold Ring (20K)",
+                grossWeight: "12.40g",
+                netWeight: "11.20g",
+                eligibleLimit: 60400,
+                status: "Disbursed",
+                disbursedAmount: 60400,
+                disbursalDate: "10-Apr-2026"
+            },
+            "LN-2026-005": {
+                customerName: "Rajesh Sharma",
+                mobile: "96321 09876",
+                assetName: "Silver Plate (99.9%)",
+                grossWeight: "500.00g",
+                netWeight: "495.00g",
+                eligibleLimit: 34200,
+                status: "Disbursed",
+                disbursedAmount: 34200,
+                disbursalDate: "01-May-2026"
+            },
+            "LN-2026-006": {
+                customerName: "Ramesh Kumar",
+                mobile: "98765 43210",
+                assetName: "Gold Rings (18K)",
+                grossWeight: "12.50g",
+                netWeight: "10.30g",
+                eligibleLimit: 95000,
+                status: "Disbursed",
+                disbursedAmount: 95000,
+                disbursalDate: "15-May-2026"
+            }
+        };
+
+        // Load loanRegistry from localStorage, fallback to default
+        let loanRegistry = defaultLoanRegistry;
+        if (localStorage.getItem('loanRegistry')) {
+            try {
+                loanRegistry = JSON.parse(localStorage.getItem('loanRegistry'));
+                // Ensure all fields exist in local storage database by merging defaults if fields are missing
+                let updated = false;
+                for (const key in defaultLoanRegistry) {
+                    if (!loanRegistry[key] || !loanRegistry[key].assetName) {
+                        loanRegistry[key] = defaultLoanRegistry[key];
+                        updated = true;
+                    } else if (!loanRegistry[key].disbursalDate && defaultLoanRegistry[key].disbursalDate) {
+                        loanRegistry[key].disbursalDate = defaultLoanRegistry[key].disbursalDate;
+                        updated = true;
+                    }
+                }
+                if (updated) {
+                    localStorage.setItem('loanRegistry', JSON.stringify(loanRegistry));
+                }
+            } catch (e) {
+                console.error("Error parsing loanRegistry from localStorage", e);
+            }
+        } else {
+            localStorage.setItem('loanRegistry', JSON.stringify(loanRegistry));
+        }
+
+        const defaultLedgerDatabase = {
+            "Ramesh Kumar": {
+                "loans": {
+                    "LN-2026-001": [
+                        { date: "01-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Necklace)", vchType: "Payment", vchNo: "PMT-001", debit: 246750, credit: 0 },
+                        { date: "01-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-012", debit: 3701, credit: 0 },
+                        { date: "10-May-2026", particulars: "By Cash Repayment (Part Principal + Interest)", vchType: "Receipt", vchNo: "RCT-005", debit: 0, credit: 15000 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-033", debit: 3532, credit: 0 }
+                    ],
+                    "LN-2026-006": [
+                        { date: "15-May-2026", particulars: "To Opening Balance / Disbursal (Gold Rings)", vchType: "Payment", vchNo: "PMT-024", debit: 95000, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-038", debit: 713, credit: 0 },
+                        { date: "25-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-019", debit: 0, credit: 5000 }
+                    ]
+                }
+            },
+            "Sita Devi": {
+                "loans": {
+                    "LN-2026-002": [
+                        { date: "10-May-2026", particulars: "To Opening Balance / Disbursal (Silver Anklets)", vchType: "Payment", vchNo: "PMT-012", debit: 8100, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-034", debit: 122, credit: 0 }
+                    ]
+                }
+            },
+            "Harish Verma": {
+                "loans": {
+                    "LN-2026-003": []
+                }
+            },
+            "Kamla Devi": {
+                "loans": {
+                    "LN-2026-004": [
+                        { date: "10-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Ring)", vchType: "Payment", vchNo: "PMT-004", debit: 60400, credit: 0 },
+                        { date: "10-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-018", debit: 906, credit: 0 },
+                        { date: "15-May-2026", particulars: "By Part Cash Repayment", vchType: "Receipt", vchNo: "RCT-008", debit: 0, credit: 10000 }
+                    ]
+                }
+            },
+            "Rajesh Sharma": {
+                "loans": {
+                    "LN-2026-005": [
+                        { date: "01-May-2026", particulars: "To Opening Balance / Disbursal (Silver Plate)", vchType: "Payment", vchNo: "PMT-018", debit: 34200, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-035", debit: 513, credit: 0 },
+                        { date: "28-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-020", debit: 0, credit: 2000 }
+                    ]
+                }
+            }
+        };
+
+        let ledgerDatabase = defaultLedgerDatabase;
+        if (localStorage.getItem('ledgerDatabase')) {
+            try {
+                ledgerDatabase = JSON.parse(localStorage.getItem('ledgerDatabase'));
+            } catch (e) {
+                console.error("Error parsing ledgerDatabase from localStorage", e);
+            }
+        } else {
+            localStorage.setItem('ledgerDatabase', JSON.stringify(ledgerDatabase));
+        }
+
+        const urlParams = new URLSearchParams(window.location.search);
+        const loanId = urlParams.get('loanId') || "LN-2026-003";
+
+        const loan = loanRegistry[loanId];
+
+        function formatCurrency(amount) {
+            return "₹ " + Number(amount).toLocaleString('en-IN');
+        }
+
+        if (!loan) {
+            alert("Loan ID not found in registry!");
+            window.location.href = 'dashboard.html';
+        } else {
+            // Populate screen
+            document.getElementById('disbursalSubtitle').innerHTML = `Date: <strong>${loan.disbursalDate || 'N/A'}</strong> • Customer: <strong>${loan.customerName}</strong> • Mobile: ${loan.mobile || 'N/A'}`;
+            document.getElementById('ornamentType').textContent = loan.assetName;
+            document.getElementById('grossWeight').textContent = loan.grossWeight;
+            document.getElementById('netWeight').textContent = loan.netWeight;
+            document.getElementById('maxLoan').textContent = formatCurrency(loan.eligibleLimit);
+            
+            const principalInput = document.getElementById('principal');
+            principalInput.value = loan.eligibleLimit;
+            principalInput.max = loan.eligibleLimit;
+
+            const checkbox = document.getElementById('agreement');
+            const submitBtn = document.getElementById('disburse-btn');
+            const container = document.getElementById('agreement-container');
+
+            if (loan.status === "Disbursed") {
+                // Read-only / Disbursed view mode
+                principalInput.disabled = true;
+                principalInput.classList.add('bg-surface-container', 'cursor-not-allowed');
+                
+                checkbox.checked = true;
+                checkbox.disabled = true;
+                checkbox.classList.add('cursor-not-allowed');
+                
+                container.classList.add('border-primary', 'bg-primary-fixed', 'cursor-not-allowed', 'pointer-events-none');
+                
+                submitBtn.disabled = true;
+                submitBtn.innerHTML = `
+                    <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">verified</span>
+                    Already Disbursed / पहले से वितरित
+                `;
+                submitBtn.classList.remove('bg-primary');
+                submitBtn.classList.add('bg-[#15803d]', 'text-on-primary', 'opacity-100', 'grayscale-0', 'pointer-events-none');
+            } else {
+                // Interactive Pending Disbursal view mode
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.checked) {
+                        submitBtn.disabled = false;
+                        container.classList.add('border-primary', 'bg-primary-fixed');
+                        submitBtn.classList.remove('bg-primary');
+                        submitBtn.classList.add('bg-[#15803d]'); // Success Green
+                    } else {
+                        submitBtn.disabled = true;
+                        container.classList.remove('border-primary', 'bg-primary-fixed');
+                        submitBtn.classList.add('bg-primary');
+                        submitBtn.classList.remove('bg-[#15803d]');
+                    }
+                });
+
+                submitBtn.addEventListener('click', () => {
+                    const amount = parseFloat(principalInput.value);
+                    if (isNaN(amount) || amount <= 0) {
+                        alert("Please enter a valid principal amount.");
+                        return;
+                    }
+                    if (amount > loan.eligibleLimit) {
+                        alert(`Maximum eligible principal limit is ${formatCurrency(loan.eligibleLimit)}.`);
+                        return;
+                    }
+
+                    submitBtn.innerHTML = `
+                        <svg class="animate-spin h-6 w-6 text-white inline-block mr-xs" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                        </svg>
+                        Processing Disbursal...
+                    `;
+                    submitBtn.disabled = true;
+
+                    setTimeout(() => {
+                        const formattedDate = "02-Jun-2026"; // Consistent mock system date
+
+                        // Update status in registry
+                        loanRegistry[loanId].status = "Disbursed";
+                        loanRegistry[loanId].disbursedAmount = amount;
+                        loanRegistry[loanId].disbursalDate = formattedDate;
+                        localStorage.setItem('loanRegistry', JSON.stringify(loanRegistry));
+
+                        // Post transaction to ledger
+                        const customerName = loan.customerName;
+                        const shortNum = loanId.split('-').pop();
+                        const voucherNo = `PMT-${shortNum}`;
+
+                        const newTx = {
+                            date: formattedDate,
+                            particulars: `To Opening Balance / Disbursal (${loan.assetName})`,
+                            vchType: "Payment",
+                            vchNo: voucherNo,
+                            debit: amount,
+                            credit: 0
+                        };
+
+                        if (!ledgerDatabase[customerName]) {
+                            ledgerDatabase[customerName] = { loans: {} };
+                        }
+                        if (!ledgerDatabase[customerName].loans[loanId]) {
+                            ledgerDatabase[customerName].loans[loanId] = [];
+                        }
+                        ledgerDatabase[customerName].loans[loanId].push(newTx);
+                        localStorage.setItem('ledgerDatabase', JSON.stringify(ledgerDatabase));
+
+                        alert(`Loan Disbursed Successfully! Posted payment voucher ${voucherNo} to customer ledger.`);
+                        window.location.href = `reports.html?tab=accounting&customer=${encodeURIComponent(customerName)}&loanId=${encodeURIComponent(loanId)}`;
+                    }, 2000);
+                });
+            }
+        }
+
+        function goBack() {
+            if (document.referrer && document.referrer.includes('reports.html')) {
+                window.location.href = document.referrer;
+            } else {
+                window.location.href = 'reports.html?tab=accounting';
+            }
+        }
+
+        // Keydown listener for Esc and Backspace keys to go back
+        document.addEventListener('keydown', (e) => {
+            const activeEl = document.activeElement;
+            const isTyping = activeEl && (
+                activeEl.tagName === 'INPUT' || 
+                activeEl.tagName === 'TEXTAREA' || 
+                activeEl.isContentEditable
+            );
+            
+            if (e.key === "Escape") {
+                e.preventDefault();
+                goBack();
+            } else if (e.key === "Backspace" && !isTyping) {
+                e.preventDefault();
+                goBack();
+            }
+        });
+    </script>
+</body></html>

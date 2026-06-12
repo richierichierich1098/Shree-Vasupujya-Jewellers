@@ -1,0 +1,1616 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Bharat Loan Manager - Financial Reports</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        .active-tab {
+            border-bottom: 4px solid #002045;
+            color: #002045;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+        }
+        @media print {
+            body.printing-ledger > :not(#tallyLedgerModal) {
+                display: none !important;
+            }
+            body.printing-ledger #tallyLedgerModal {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100%;
+                height: 100%;
+                background: white !important;
+                display: block !important;
+                padding: 0;
+                margin: 0;
+            }
+            body.printing-ledger #tallyLedgerModal > div {
+                border: none !important;
+                box-shadow: none !important;
+                width: 100% !important;
+                max-width: 100% !important;
+                background: white !important;
+            }
+            body.printing-ledger .no-print {
+                display: none !important;
+            }
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-tertiary-fixed-variant": "#3d4759",
+                    "error-container": "#ffdad6",
+                    "on-surface": "#191c1e",
+                    "primary-container": "#1a365d",
+                    "surface-container-low": "#f2f4f6",
+                    "surface-variant": "#e0e3e5",
+                    "on-error-container": "#93000a",
+                    "error": "#ba1a1a",
+                    "outline": "#74777f",
+                    "surface-dim": "#d8dadc",
+                    "surface-container-lowest": "#ffffff",
+                    "primary-fixed": "#d6e3ff",
+                    "on-background": "#191c1e",
+                    "on-tertiary-fixed": "#121c2c",
+                    "on-secondary-fixed": "#241a00",
+                    "secondary-fixed-dim": "#e9c349",
+                    "on-primary-container": "#86a0cd",
+                    "primary": "#002045",
+                    "surface-container-high": "#e6e8ea",
+                    "secondary": "#735c00",
+                    "tertiary-fixed": "#d9e3f9",
+                    "surface-tint": "#455f88",
+                    "on-primary": "#ffffff",
+                    "on-surface-variant": "#43474e",
+                    "surface": "#f7f9fb",
+                    "primary-fixed-dim": "#adc7f7",
+                    "on-primary-fixed-variant": "#2d476f",
+                    "tertiary-container": "#2c3647",
+                    "on-secondary-container": "#745c00",
+                    "tertiary-fixed-dim": "#bdc7dc",
+                    "background": "#f7f9fb",
+                    "on-tertiary-container": "#959fb3",
+                    "on-secondary": "#ffffff",
+                    "secondary-fixed": "#ffe088",
+                    "surface-container-highest": "#e0e3e5",
+                    "surface-container": "#eceef0",
+                    "on-primary-fixed": "#001b3c",
+                    "on-secondary-fixed-variant": "#574500",
+                    "on-tertiary": "#ffffff",
+                    "on-error": "#ffffff",
+                    "outline-variant": "#c4c6cf",
+                    "inverse-on-surface": "#eff1f3",
+                    "secondary-container": "#fed65b",
+                    "surface-bright": "#f7f9fb",
+                    "tertiary": "#172131",
+                    "inverse-surface": "#2d3133",
+                    "inverse-primary": "#adc7f7"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.125rem",
+                    "lg": "0.25rem",
+                    "xl": "0.5rem",
+                    "full": "0.75rem"
+            },
+            "spacing": {
+                    "sm": "12px",
+                    "xs": "4px",
+                    "touch-target": "48px",
+                    "base": "8px",
+                    "lg": "40px",
+                    "md": "24px",
+                    "gutter": "16px",
+                    "margin-mobile": "20px"
+            },
+            "fontFamily": {
+                    "body-lg": ["Inter"],
+                    "value-display": ["Inter"],
+                    "label-caps": ["Inter"],
+                    "headline-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "headline-lg-mobile": ["Inter"],
+                    "body-md": ["Inter"]
+            },
+            "fontSize": {
+                    "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                    "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                    "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                    "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                    "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                    "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- TopAppBar -->
+<!-- Side Navigation Drawer -->
+<div id="sideDrawer" class="fixed inset-0 z-50 hidden no-print">
+    <!-- Backdrop overlay -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity duration-300" onclick="toggleSideDrawer(false)"></div>
+    <!-- Drawer Content -->
+    <div class="fixed top-0 left-0 h-full w-[280px] bg-white dark:bg-zinc-900 border-r border-outline-variant shadow-2xl flex flex-col justify-between p-md transition-transform duration-300 transform -translate-x-full z-50" id="sideDrawerContent">
+        <div class="space-y-md">
+            <!-- Drawer Header -->
+            <div class="flex items-center justify-between pb-sm border-b border-outline-variant">
+                <div class="flex items-center gap-base">
+                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                    <div>
+                        <h3 class="font-headline-md text-sm font-bold text-primary">Bharat Loan Manager</h3>
+                        <p class="text-[10px] text-on-surface-variant/80 font-mono">Agent ID: 8821</p>
+                    </div>
+                </div>
+                <button onclick="toggleSideDrawer(false)" class="p-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            <!-- Drawer Navigation Items -->
+            <nav class="flex flex-col gap-xs pt-sm">
+                <a href="dashboard.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">dashboard</span>
+                    <span>Dashboard / मुख्य पृष्ठ</span>
+                </a>
+                <a href="kyc.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">person_add</span>
+                    <span>Customers / ग्राहक सूची</span>
+                </a>
+                <a href="valuation.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">payments</span>
+                    <span>Valuation / मूल्यांकन</span>
+                </a>
+                <a href="reports.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">analytics</span>
+                    <span>Reports / रिपोर्ट</span>
+                </a>
+            </nav>
+        </div>
+        <!-- Drawer Footer / Logout -->
+        <div class="pt-sm border-t border-outline-variant">
+            <button onclick="logoutAgent()" class="w-full flex items-center justify-center gap-base h-touch-target bg-red-100 hover:bg-red-600 hover:text-white text-red-700 rounded-xl font-label-caps text-xs transition-all active:scale-95">
+                <span class="material-symbols-outlined text-xl">logout</span>
+                <span>LOGOUT / लॉगआउट</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-base">
+<button onclick="toggleSideDrawer(true)" class="text-on-primary dark:text-on-primary-container hover:bg-primary-fixed-dim/10 p-base rounded-full flex items-center justify-center"><span class="material-symbols-outlined text-on-primary" data-icon="menu">menu</span></button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Bharat Loan Manager</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="hidden md:flex gap-md px-md">
+<span class="text-on-primary/80 font-label-caps text-label-caps cursor-pointer">English</span>
+<span class="text-on-primary/80 font-label-caps text-label-caps cursor-pointer">हिंदी</span>
+</div>
+<span class="material-symbols-outlined text-on-primary" data-icon="cloud_done">cloud_done</span>
+</div>
+</header>
+<main class="pt-20 px-margin-mobile md:px-lg max-w-7xl mx-auto">
+<!-- Dashboard Header & Tabs -->
+<div class="mb-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile md:font-headline-lg md:text-headline-lg text-primary mb-xs">Financial Reports Dashboard</h2>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time portfolio valuation and accounting ledger.</p>
+</div>
+
+<!-- Date Wise Report Filter Bar -->
+<div class="bg-surface-container border border-outline-variant p-sm rounded-xl mb-md flex flex-col md:flex-row md:items-center justify-between gap-base shadow-xs no-print">
+    <div class="flex items-center gap-xs">
+        <span class="material-symbols-outlined text-primary">calendar_today</span>
+        <span class="font-label-caps text-label-caps text-primary font-bold">Date Range Selector / दिनांक सीमा फ़िल्टर</span>
+    </div>
+    <div class="flex flex-wrap items-center gap-sm">
+        <div class="flex items-center gap-xs">
+            <label for="reportFromDate" class="text-xs font-bold text-on-surface-variant uppercase">From:</label>
+            <input id="reportFromDate" type="date" class="bg-white border border-outline text-xs rounded px-2 py-1.5 focus:ring-1 focus:ring-primary focus:border-primary text-gray-800" value="2026-04-01" onchange="applyDateFilter()"/>
+        </div>
+        <div class="flex items-center gap-xs">
+            <label for="reportToDate" class="text-xs font-bold text-on-surface-variant uppercase">To:</label>
+            <input id="reportToDate" type="date" class="bg-white border border-outline text-xs rounded px-2 py-1.5 focus:ring-1 focus:ring-primary focus:border-primary text-gray-800" value="2026-06-02" onchange="applyDateFilter()"/>
+        </div>
+        <button onclick="resetDateFilter()" class="bg-primary text-on-primary text-xs px-3 py-1.5 rounded font-bold hover:opacity-90 active:scale-95 transition-all">Reset</button>
+    </div>
+</div>
+
+<!-- Tabbed Navigation -->
+<div class="flex border-b border-outline-variant mb-md overflow-x-auto whitespace-nowrap">
+<button class="active-tab px-md py-base font-label-caps text-label-caps transition-all" id="tab-summary" onclick="switchTab('summary')">Summary</button>
+<button class="px-md py-base text-on-surface-variant font-label-caps text-label-caps transition-all" id="tab-inventory" onclick="switchTab('inventory')">Inventory</button>
+<button class="px-md py-base text-on-surface-variant font-label-caps text-label-caps transition-all" id="tab-accounting" onclick="switchTab('accounting')">Accounting</button>
+</div>
+<!-- VIEW: Daily Summary & Position -->
+<section class="space-y-md" id="view-summary">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-md">
+<!-- Portfolio Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm border-l-4 border-l-[#D4AF37]">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">TOTAL PORTFOLIO VALUE</p>
+<p id="summaryTotalPortfolio" class="font-value-display text-value-display text-primary">₹ 1,42,85,200</p>
+<div class="mt-sm flex items-center gap-xs text-secondary">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="font-body-md text-body-md">Market Rate: +1.2%</span>
+</div>
+</div>
+<!-- Outstanding Principal Card -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm border-l-4 border-l-primary">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">OUTSTANDING PRINCIPAL</p>
+<p id="summaryOutstandingPrincipal" class="font-value-display text-value-display text-primary">₹ 88,40,000</p>
+<div class="mt-sm flex items-center gap-xs text-on-surface-variant">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-body-md text-body-md">LTV Ratio: 61.8%</span>
+</div>
+</div>
+<!-- Live Market Rates -->
+<div class="bg-surface-container-lowest border border-outline-variant p-md rounded-xl shadow-sm md:col-span-2 lg:col-span-1">
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-xs">LIVE MARKET RATES (per 10g)</p>
+<div class="space-y-base">
+<div class="flex justify-between items-center py-xs border-b border-outline-variant">
+<span class="font-body-md text-body-md">Gold (22K)</span>
+<span id="liveGoldRateDisplay" class="font-label-caps text-label-caps text-primary">₹ 58,450</span>
+</div>
+<div class="flex justify-between items-center py-xs">
+<span class="font-body-md text-body-md">Silver (Fine)</span>
+<span id="liveSilverRateDisplay" class="font-label-caps text-label-caps text-primary">₹ 742</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Calculation Transparency Bento -->
+<div class="bg-surface-container border border-outline-variant rounded-xl p-md">
+<h3 class="font-headline-md text-headline-md text-primary mb-md">Portfolio Calculation</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-lg">
+<div>
+<p class="font-label-caps text-label-caps text-on-surface-variant mb-base">ASSET BREAKDOWN</p>
+<ul class="space-y-sm">
+<li class="flex justify-between bg-surface-container-lowest p-sm border border-outline-variant rounded-lg">
+<span class="font-body-md text-body-md">Total Gold (Fine Wt.)</span>
+<span id="summaryTotalGold" class="font-value-display text-value-display">2,145.50 g</span>
+</li>
+<li class="flex justify-between bg-surface-container-lowest p-sm border border-outline-variant rounded-lg">
+<span class="font-body-md text-body-md">Total Silver (Fine Wt.)</span>
+<span id="summaryTotalSilver" class="font-value-display text-value-display">12,800.00 g</span>
+</li>
+</ul>
+</div>
+<div class="flex flex-col justify-center bg-primary-container text-on-primary-container p-md rounded-xl">
+<p class="font-label-caps text-label-caps opacity-70 mb-xs">FORMULA APPLIED</p>
+<p class="font-body-lg text-body-lg italic mb-md">(Gold_Wt × Rate) + (Silver_Wt × Rate)</p>
+<div class="pt-base border-t border-on-primary-container/20">
+<p class="font-label-caps text-label-caps opacity-70">VALUATION RESULT</p>
+<p id="summaryValuationResultText" class="text-[32px] font-bold">₹ 1,42,85,200</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- VIEW: Inventory Report -->
+<section class="hidden space-y-md" id="view-inventory">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-base mb-base">
+<h3 class="font-headline-md text-headline-md text-primary">Vault Asset Registry</h3>
+<div class="flex gap-base w-full md:w-auto">
+<button class="flex-1 md:flex-none h-touch-target px-md bg-primary text-on-primary flex items-center justify-center gap-base rounded-lg font-label-caps text-label-caps">
+<span class="material-symbols-outlined" data-icon="file_download">file_download</span> EXPORT
+                    </button>
+<button class="flex-1 md:flex-none h-touch-target px-md border-2 border-primary text-primary flex items-center justify-center gap-base rounded-lg font-label-caps text-label-caps">
+<span class="material-symbols-outlined" data-icon="filter_list">filter_list</span> FILTER
+                    </button>
+</div>
+</div>
+<div class="overflow-hidden border border-outline-variant rounded-xl bg-surface-container-lowest">
+<table class="w-full text-left border-collapse">
+<thead class="bg-surface-container-high border-b border-outline-variant">
+<tr>
+<th class="p-md font-label-caps text-label-caps">Ornament Type</th>
+<th class="p-md font-label-caps text-label-caps">Purity</th>
+<th class="p-md font-label-caps text-label-caps text-right">Gross Weight</th>
+<th class="p-md font-label-caps text-label-caps text-right">Fine Weight</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-outline-variant">
+<tr class="hover:bg-surface-container">
+<td class="p-md font-body-md text-body-md">Gold Necklace (Temple Design)</td>
+<td class="p-md"><span class="bg-secondary-container text-on-secondary-container px-base py-xs rounded text-xs font-bold">22K</span></td>
+<td class="p-md font-body-md text-body-md text-right">45.50g</td>
+<td class="p-md font-body-md text-body-md text-right">41.80g</td>
+</tr>
+<tr class="hover:bg-surface-container">
+<td class="p-md font-body-md text-body-md">Silver Anklets (Pair)</td>
+<td class="p-md"><span class="bg-surface-container-high text-on-surface-variant px-base py-xs rounded text-xs font-bold">925</span></td>
+<td class="p-md font-body-md text-body-md text-right">120.00g</td>
+<td class="p-md font-body-md text-body-md text-right">111.00g</td>
+</tr>
+<tr class="hover:bg-surface-container">
+<td class="p-md font-body-md text-body-md">Gold Bangles (Set of 4)</td>
+<td class="p-md"><span class="bg-secondary-container text-on-secondary-container px-base py-xs rounded text-xs font-bold">22K</span></td>
+<td class="p-md font-body-md text-body-md text-right">82.30g</td>
+<td class="p-md font-body-md text-body-md text-right">75.70g</td>
+</tr>
+</tbody>
+<tfoot class="bg-surface-container-low font-bold">
+<tr>
+<td class="p-md font-label-caps text-label-caps" colspan="2">VAULT TOTALS</td>
+<td class="p-md text-right text-primary font-value-display">247.80g</td>
+<td class="p-md text-right text-primary font-value-display">228.50g</td>
+</tr>
+</tfoot>
+</table>
+</div>
+</section>
+<!-- VIEW: Accounting Books -->
+<section class="hidden space-y-md" id="view-accounting">
+<div class="relative mb-lg">
+<input id="ledgerSearchInput" class="w-full h-touch-target pl-12 pr-md bg-surface-container-lowest border border-outline text-body-md focus:border-primary focus:ring-1 focus:ring-primary rounded-xl" placeholder="Search Customer Ledger (Mobile or Loan ID)..." type="text"/>
+<span class="material-symbols-outlined absolute left-md top-1/2 -translate-y-1/2 text-on-surface-variant" data-icon="search">search</span>
+</div>
+
+<!-- Customer Ledger Table -->
+<div class="overflow-hidden border border-outline-variant rounded-xl bg-surface-container-lowest mb-lg shadow-sm">
+    <div class="bg-surface-container-high p-md border-b border-outline-variant flex justify-between items-center">
+        <h4 class="font-headline-md text-headline-md text-primary flex items-center gap-xs">
+            <span class="material-symbols-outlined">menu_book</span>
+            <span>Customer Ledgers / ग्राहक खाता बही</span>
+        </h4>
+        <span class="text-xs text-outline">Showing active loan accounts</span>
+    </div>
+    <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse" id="ledgerTable">
+            <thead class="bg-surface-container border-b border-outline-variant">
+                <tr>
+                    <th class="p-md font-label-caps text-label-caps">Loan ID</th>
+                    <th class="p-md font-label-caps text-label-caps">Customer / ग्राहक</th>
+                    <th class="p-md font-label-caps text-label-caps">Mobile</th>
+                    <th class="p-md font-label-caps text-label-caps text-center">Date / दिनांक</th>
+                    <th class="p-md font-label-caps text-label-caps">Asset Detail</th>
+                    <th class="p-md font-label-caps text-label-caps text-right">Loan Principal</th>
+                    <th class="p-md font-label-caps text-label-caps text-center">Status</th>
+                    <th class="p-md font-label-caps text-label-caps text-center">Action</th>
+                </tr>
+            </thead>
+                        <tbody class="divide-y divide-outline-variant" id="ledgerTableBody">
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-001" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-001</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Ramesh Kumar</span>
+                        <span class="text-xs text-on-surface-variant/70">रमेश कुमार</span>
+                    </td>
+                    <td class="p-md font-body-md">98765 43210</td>
+                    <td class="p-md font-body-md text-center">01-Apr-2026</td>
+                    <td class="p-md font-body-md">Gold Necklace (22K) - 45.50g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 2,46,750</td>
+                    <td class="p-md text-center"><span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Ramesh Kumar', 'LN-2026-001')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-002" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-002</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Sita Devi</span>
+                        <span class="text-xs text-on-surface-variant/70">सीता देवी</span>
+                    </td>
+                    <td class="p-md font-body-md">94140 12345</td>
+                    <td class="p-md font-body-md text-center">10-May-2026</td>
+                    <td class="p-md font-body-md">Silver Anklets (92.5%) - 120.00g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 8,100</td>
+                    <td class="p-md text-center"><span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Sita Devi', 'LN-2026-002')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-003" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-003</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Harish Verma</span>
+                        <span class="text-xs text-on-surface-variant/70">हरीश वर्मा</span>
+                    </td>
+                    <td class="p-md font-body-md">70141 98765</td>
+                    <td class="p-md font-body-md text-center">02-Jun-2026</td>
+                    <td class="p-md font-body-md">Gold Bangles (22K) - 82.30g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 4,47,000</td>
+                    <td class="p-md text-center"><span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 px-base py-xs rounded-full text-xs font-bold">Pending Approval</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Harish Verma', 'LN-2026-003')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-004" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-004</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Kamla Devi</span>
+                        <span class="text-xs text-on-surface-variant/70">कमला देवी</span>
+                    </td>
+                    <td class="p-md font-body-md">88902 54321</td>
+                    <td class="p-md font-body-md text-center">10-Apr-2026</td>
+                    <td class="p-md font-body-md">Gold Ring (20K) - 12.40g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 60,400</td>
+                    <td class="p-md text-center"><span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Kamla Devi', 'LN-2026-004')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-005" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-005</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Rajesh Sharma</span>
+                        <span class="text-xs text-on-surface-variant/70">राजेश शर्मा</span>
+                    </td>
+                    <td class="p-md font-body-md">96321 09876</td>
+                    <td class="p-md font-body-md text-center">01-May-2026</td>
+                    <td class="p-md font-body-md">Silver Plate (99.9%) - 500.00g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 34,200</td>
+                    <td class="p-md text-center"><span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Rajesh Sharma', 'LN-2026-005')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hover:bg-surface-container transition-colors">
+                    <td class="p-md font-bold text-primary"><a href="disbursal.html?loanId=LN-2026-006" class="hover:underline text-primary hover:text-blue-700 cursor-pointer font-bold">LN-2026-006</a></td>
+                    <td class="p-md flex flex-col">
+                        <span class="font-body-md font-semibold">Ramesh Kumar</span>
+                        <span class="text-xs text-on-surface-variant/70">रमेश कुमार (ऋण 2)</span>
+                    </td>
+                    <td class="p-md font-body-md">98765 43210</td>
+                    <td class="p-md font-body-md text-center">15-May-2026</td>
+                    <td class="p-md font-body-md">Gold Rings (18K) - 12.50g</td>
+                    <td class="p-md font-bold text-right text-primary">₹ 95,000</td>
+                    <td class="p-md text-center"><span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span></td>
+                    <td class="p-md text-center">
+                        <button onclick="openTallyLedger('Ramesh Kumar', 'LN-2026-006')" class="px-sm py-xs bg-primary text-on-primary rounded-lg text-xs font-bold flex items-center justify-center gap-xs mx-auto hover:opacity-90 active:scale-95 transition-all">
+                            <span class="material-symbols-outlined !text-sm">menu_book</span>
+                            <span>Tally Ledger</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <!-- No Results Placeholder -->
+    <div id="noLedgerResults" class="hidden p-lg text-center text-on-surface-variant bg-surface-container-low border-t border-outline-variant">
+        <span class="material-symbols-outlined text-outline text-[48px] mb-base">search_off</span>
+        <p class="font-body-lg text-body-lg">No matching customer ledger records found.</p>
+        <p class="text-xs text-outline mt-xs">ग्राहक खाता बही रिकॉर्ड नहीं मिला।</p>
+    </div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<!-- P&L Statement Placeholder -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="bg-surface-container-high p-md flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md text-primary">P&amp;L Statement</h4>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="open_in_new">open_in_new</span>
+</div>
+<div class="p-md space-y-sm">
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md">Interest Income</span>
+<span id="summaryInterestIncome" class="font-label-caps text-label-caps text-secondary">₹ 14,20,500</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="font-body-md text-body-md">Operational Expenses</span>
+<span class="font-label-caps text-label-caps text-error">₹ 3,45,000</span>
+</div>
+<div class="pt-base border-t border-outline-variant flex justify-between items-center">
+<span class="font-bold text-body-md">Net Surplus</span>
+<span id="summaryNetSurplus" class="font-value-display text-value-display text-primary">₹ 10,75,500</span>
+</div>
+</div>
+<div class="h-32 w-full bg-surface-container-low flex items-end px-md pb-xs gap-xs">
+<!-- Tiny Chart Mockup -->
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 40%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 60%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 45%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 80%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 95%"></div>
+<div class="bg-primary flex-1 rounded-t-sm" style="height: 70%"></div>
+</div>
+</div>
+<!-- Balance Sheet Placeholder -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl overflow-hidden shadow-sm">
+<div class="bg-surface-container-high p-md flex justify-between items-center">
+<h4 class="font-headline-md text-headline-md text-primary">Balance Sheet</h4>
+<span class="material-symbols-outlined text-on-surface-variant" data-icon="account_balance">account_balance</span>
+</div>
+<div class="p-md">
+<div class="space-y-xs mb-md">
+<p class="font-label-caps text-label-caps text-on-surface-variant">LIABILITIES</p>
+<div class="flex justify-between text-body-md">
+<span>Owner Capital</span>
+<span id="summaryOwnerCapital">₹ 50,00,000</span>
+</div>
+</div>
+<div class="space-y-xs">
+<p class="font-label-caps text-label-caps text-on-surface-variant">ASSETS</p>
+<div class="flex justify-between text-body-md">
+<span>Cash in Hand</span>
+<span id="summaryCashInHand">₹ 5,20,000</span>
+</div>
+<div class="flex justify-between text-body-md">
+<span>Vault Assets (Book Value)</span>
+<span id="summaryVaultAssets">₹ 88,40,000</span>
+</div>
+</div>
+</div>
+<div class="p-md bg-primary text-on-primary text-center">
+<p class="font-label-caps text-label-caps">Books Status: TALLY BALANCED</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Tally Ledger Modal -->
+<div id="tallyLedgerModal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/60 flex items-center justify-center p-4 backdrop-blur-xs">
+    <div class="bg-[#f2f6f6] border-2 border-[#004d4d] w-full max-w-5xl rounded-lg shadow-2xl flex flex-col font-sans text-xs text-gray-900 overflow-hidden">
+        <!-- Tally Header -->
+        <div class="bg-[#00474f] text-[#e0f2f1] px-gutter py-sm flex justify-between items-center border-b border-[#003333] no-print">
+            <div class="flex items-center gap-base">
+                <span class="material-symbols-outlined text-[#80cbc4]">account_balance</span>
+                <span class="font-bold tracking-wider text-sm">TallyPrime - Ledger Statement</span>
+            </div>
+            <button onclick="closeTallyLedger()" class="hover:bg-red-700 hover:text-white px-2 py-1 rounded text-sm transition-colors font-bold">&times; Close (Esc)</button>
+        </div>
+        
+        <!-- Company & Account Details -->
+        <div class="bg-[#e0ecec] px-gutter py-sm border-b border-[#b2dfdb] flex flex-col gap-xs md:flex-row md:justify-between md:items-center">
+            <div>
+                <h3 class="font-bold text-base text-[#004d4d] uppercase" id="modalCompanyName">Shree Vasupujya Jewellers & Finance</h3>
+                <p class="text-[11px] text-gray-600 font-semibold" id="modalAccountGroup">Account: Sundry Debtors / Loan Receivables</p>
+            </div>
+            <div class="text-right text-xs">
+                <p class="font-bold text-gray-800 text-sm" id="modalCustomerName">Ledger: Ramesh Kumar</p>
+                <p class="text-[11px] text-gray-600 font-medium" id="modalPeriod">Period: 01-Apr-2026 to 02-Jun-2026</p>
+            </div>
+        </div>
+
+        <!-- Filter & Control Toolbar -->
+        <div class="bg-[#f7f9f9] px-gutter py-xs border-b border-[#e0ecec] flex flex-col sm:flex-row sm:justify-between sm:items-center gap-base no-print">
+            <div class="flex items-center gap-sm">
+                <span class="font-bold text-gray-700">Account / Loan ID:</span>
+                <select id="modalLoanFilter" onchange="filterTallyLedgerTransactions()" class="text-xs bg-white border border-[#b2dfdb] rounded px-2 py-1 focus:outline-none focus:ring-1 focus:ring-[#004d4d] text-gray-800 min-w-[200px]">
+                    <!-- Populated dynamically -->
+                </select>
+            </div>
+            <div class="flex gap-sm">
+                <button onclick="printTallyLedger()" class="bg-[#004d4d] text-[#e0f2f1] px-3 py-1 rounded font-bold hover:bg-[#003333] transition-colors flex items-center gap-xs">
+                    <span class="material-symbols-outlined !text-sm">print</span>
+                    <span>Print (Alt+P)</span>
+                </button>
+                <button onclick="exportTallyLedger()" class="bg-[#004d4d] text-[#e0f2f1] px-3 py-1 rounded font-bold hover:bg-[#003333] transition-colors flex items-center gap-xs">
+                    <span class="material-symbols-outlined !text-sm">download</span>
+                    <span>Excel (Alt+E)</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Loan Account Summary Panel (Visible only when a specific loan is selected) -->
+        <div id="modalLoanSummaryPanel" class="bg-[#eef5f5] border-b border-[#b2dfdb] px-gutter py-sm hidden no-print">
+            <!-- Populated dynamically -->
+        </div>
+
+        <!-- Ledger Table Sheet -->
+        <div class="p-gutter overflow-x-auto flex-1 bg-white">
+            <table class="w-full text-left border-collapse border border-gray-300 font-mono text-[11px]">
+                <thead>
+                    <tr class="bg-[#e0ecec] text-[#004d4d] border-b border-gray-300 font-sans font-bold">
+                        <th class="p-2 border-r border-gray-300 w-24">Date</th>
+                        <th class="p-2 border-r border-gray-300">Particulars</th>
+                        <th class="p-2 border-r border-gray-300 w-24">Vch Type</th>
+                        <th class="p-2 border-r border-gray-300 w-24">Vch No.</th>
+                        <th class="p-2 border-r border-gray-300 text-right w-32">Debit (Dr)</th>
+                        <th class="p-2 border-r border-gray-300 text-right w-32">Credit (Cr)</th>
+                        <th class="p-2 text-right w-36">Balance</th>
+                    </tr>
+                </thead>
+                <tbody id="modalLedgerBody" class="divide-y divide-gray-200">
+                    <!-- Dynamic Rows -->
+                </tbody>
+                <tfoot>
+                    <!-- Sub-total (re-balance rows) -->
+                    <tr id="modalClosingRow" class="bg-gray-50 border-t border-gray-300 font-bold">
+                        <td class="p-2 border-r border-gray-300" id="modalClosingDate">02-Jun-2026</td>
+                        <td class="p-2 border-r border-gray-300 italic text-gray-700" id="modalClosingParticulars">By Closing Balance</td>
+                        <td class="p-2 border-r border-gray-300"></td>
+                        <td class="p-2 border-r border-gray-300"></td>
+                        <td class="p-2 border-r border-gray-300 text-right" id="modalClosingDebit"></td>
+                        <td class="p-2 border-r border-gray-300 text-right" id="modalClosingCredit"></td>
+                        <td class="p-2 text-right"></td>
+                    </tr>
+                    <!-- Tally grand totals with single top line and double bottom line -->
+                    <tr class="bg-[#e0ecec] font-bold border-t border-gray-400 text-gray-900 border-b-4 border-double border-[#004d4d]">
+                        <td class="p-2 border-r border-gray-300"></td>
+                        <td class="p-2 border-r border-gray-300 font-sans font-bold">Total</td>
+                        <td class="p-2 border-r border-gray-300"></td>
+                        <td class="p-2 border-r border-gray-300"></td>
+                        <td class="p-2 border-r border-gray-300 text-right" id="modalTotalDebit">₹ 0.00</td>
+                        <td class="p-2 border-r border-gray-300 text-right" id="modalTotalCredit">₹ 0.00</td>
+                        <td class="p-2 text-right" id="modalClosingStatus">Balanced</td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <!-- Tally Footer / Hotkeys -->
+        <div class="bg-[#00474f] text-[#80cbc4] px-gutter py-2 flex justify-between items-center text-[10px] border-t border-[#003333] no-print">
+            <span>Hotkeys: <kbd class="bg-[#003333] px-1 rounded text-white font-mono font-bold">Esc</kbd> Close | <kbd class="bg-[#003333] px-1 rounded text-white font-mono font-bold">Alt+P</kbd> Print | <kbd class="bg-[#003333] px-1 rounded text-white font-mono font-bold">Alt+E</kbd> Excel</span>
+            <span class="text-right text-[#b2dfdb]">TallyPrime v4.1 - Educational Edition</span>
+        </div>
+    </div>
+</div>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant shadow-lg md:hidden">
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base" href="dashboard.html">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base" href="kyc.html">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label-caps text-label-caps">Customers</span>
+</a>
+<a class="flex flex-col items-center justify-center text-on-surface-variant p-base" href="valuation.html">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-label-caps">Valuation</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-base scale-95 transition-transform duration-150" href="reports.html">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps">Reports</span>
+</a>
+</nav>
+<script>
+        function switchTab(tabId) {
+            // Views
+            const views = ['summary', 'inventory', 'accounting'];
+            views.forEach(v => {
+                document.getElementById('view-' + v).classList.add('hidden');
+            });
+            document.getElementById('view-' + tabId).classList.remove('hidden');
+
+            // Tab Buttons
+            const tabs = ['summary', 'inventory', 'accounting'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tab-' + t);
+                btn.classList.remove('active-tab', 'text-primary');
+                btn.classList.add('text-on-surface-variant');
+            });
+            const activeBtn = document.getElementById('tab-' + tabId);
+            activeBtn.classList.add('active-tab');
+            activeBtn.classList.remove('text-on-surface-variant');
+        }
+
+        // Mock Ledger Database for double-entry Tally ledger
+        const defaultLedgerDatabase = {
+            "Ramesh Kumar": {
+                "loans": {
+                    "LN-2026-001": [
+                        { date: "01-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Necklace)", vchType: "Payment", vchNo: "PMT-001", debit: 246750, credit: 0 },
+                        { date: "01-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-012", debit: 3701, credit: 0 },
+                        { date: "10-May-2026", particulars: "By Cash Repayment (Part Principal + Interest)", vchType: "Receipt", vchNo: "RCT-005", debit: 0, credit: 15000 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-033", debit: 3532, credit: 0 }
+                    ],
+                    "LN-2026-006": [
+                        { date: "15-May-2026", particulars: "To Opening Balance / Disbursal (Gold Rings)", vchType: "Payment", vchNo: "PMT-024", debit: 95000, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-038", debit: 713, credit: 0 },
+                        { date: "25-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-019", debit: 0, credit: 5000 }
+                    ]
+                }
+            },
+            "Sita Devi": {
+                "loans": {
+                    "LN-2026-002": [
+                        { date: "10-May-2026", particulars: "To Opening Balance / Disbursal (Silver Anklets)", vchType: "Payment", vchNo: "PMT-012", debit: 8100, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-034", debit: 122, credit: 0 }
+                    ]
+                }
+            },
+            "Harish Verma": {
+                "loans": {
+                    "LN-2026-003": [] // Pending approval - no transactions
+                }
+            },
+            "Kamla Devi": {
+                "loans": {
+                    "LN-2026-004": [
+                        { date: "10-Apr-2026", particulars: "To Opening Balance / Disbursal (Gold Ring)", vchType: "Payment", vchNo: "PMT-004", debit: 60400, credit: 0 },
+                        { date: "10-May-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-018", debit: 906, credit: 0 },
+                        { date: "15-May-2026", particulars: "By Part Cash Repayment", vchType: "Receipt", vchNo: "RCT-008", debit: 0, credit: 10000 }
+                    ]
+                }
+            },
+            "Rajesh Sharma": {
+                "loans": {
+                    "LN-2026-005": [
+                        { date: "01-May-2026", particulars: "To Opening Balance / Disbursal (Silver Plate)", vchType: "Payment", vchNo: "PMT-018", debit: 34200, credit: 0 },
+                        { date: "01-Jun-2026", particulars: "To Interest A/c @1.5%", vchType: "Journal", vchNo: "JRN-035", debit: 513, credit: 0 },
+                        { date: "28-May-2026", particulars: "By Cash Repayment", vchType: "Receipt", vchNo: "RCT-020", debit: 0, credit: 2000 }
+                    ]
+                }
+            }
+        };
+
+        let ledgerDatabase = {};
+        function refreshLedgerDatabase() {
+            if (localStorage.getItem('ledgerDatabase')) {
+                try {
+                    let db = JSON.parse(localStorage.getItem('ledgerDatabase'));
+                    let updated = false;
+                    
+                    // Migrate RCT-019 date to past
+                    if (db["Ramesh Kumar"] && db["Ramesh Kumar"].loans && db["Ramesh Kumar"].loans["LN-2026-006"]) {
+                        db["Ramesh Kumar"].loans["LN-2026-006"].forEach(tx => {
+                            if (tx.vchNo === "RCT-019" && tx.date === "02-Jun-2026") {
+                                tx.date = "25-May-2026";
+                                updated = true;
+                            }
+                        });
+                    }
+                    
+                    // Migrate RCT-020 date to past
+                    if (db["Rajesh Sharma"] && db["Rajesh Sharma"].loans && db["Rajesh Sharma"].loans["LN-2026-005"]) {
+                        db["Rajesh Sharma"].loans["LN-2026-005"].forEach(tx => {
+                            if (tx.vchNo === "RCT-020" && tx.date === "02-Jun-2026") {
+                                tx.date = "28-May-2026";
+                                updated = true;
+                            }
+                        });
+                    }
+                    
+                    if (updated) {
+                        localStorage.setItem('ledgerDatabase', JSON.stringify(db));
+                    }
+                    ledgerDatabase = db;
+                } catch (e) {
+                    console.error("Error parsing ledgerDatabase from localStorage", e);
+                    ledgerDatabase = defaultLedgerDatabase;
+                }
+            } else {
+                ledgerDatabase = defaultLedgerDatabase;
+                localStorage.setItem('ledgerDatabase', JSON.stringify(ledgerDatabase));
+            }
+        }
+
+        // Initial load
+        refreshLedgerDatabase();
+
+        let currentCustomerName = "";
+
+        function parseIndianDate(dateStr) {
+            const months = {
+                "Jan": 0, "Feb": 1, "Mar": 2, "Apr": 3, "May": 4, "Jun": 5,
+                "Jul": 6, "Aug": 7, "Sep": 8, "Oct": 9, "Nov": 10, "Dec": 11
+            };
+            const parts = dateStr.split('-');
+            const day = parseInt(parts[0], 10);
+            const month = months[parts[1]];
+            const year = parseInt(parts[2], 10);
+            return new Date(year, month, day);
+        }
+
+        function formatCurrency(amount) {
+            return '₹ ' + amount.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+        }
+
+        function openTallyLedger(customerName, selectedLoanId) {
+            refreshLedgerDatabase();
+            currentCustomerName = customerName;
+            
+            // Set header info
+            document.getElementById('modalCustomerName').textContent = "Ledger: " + customerName;
+            
+            // Populate loans filter dropdown
+            const filterSelect = document.getElementById('modalLoanFilter');
+            filterSelect.innerHTML = '';
+            
+            const customer = ledgerDatabase[customerName];
+            if (customer && customer.loans) {
+                const loanIds = Object.keys(customer.loans);
+                
+                // Add Consolidated option
+                const allOpt = document.createElement('option');
+                allOpt.value = 'all';
+                allOpt.textContent = 'All Loans (Consolidated)';
+                filterSelect.appendChild(allOpt);
+                
+                // Add specific loan options
+                loanIds.forEach(id => {
+                    const opt = document.createElement('option');
+                    opt.value = id;
+                    opt.textContent = id;
+                    filterSelect.appendChild(opt);
+                });
+                
+                // Pre-select loan if provided
+                if (selectedLoanId && loanIds.includes(selectedLoanId)) {
+                    filterSelect.value = selectedLoanId;
+                } else {
+                    filterSelect.value = 'all';
+                }
+            }
+            
+            const fromDateInput = document.getElementById('reportFromDate').value;
+            const toDateInput = document.getElementById('reportToDate').value;
+            document.getElementById('modalPeriod').textContent = getFormattedPeriodText(fromDateInput, toDateInput);
+            
+            filterTallyLedgerTransactions();
+            
+            // Show modal
+            const modal = document.getElementById('tallyLedgerModal');
+            modal.classList.remove('hidden');
+            document.body.classList.add('overflow-hidden');
+        }
+
+        function closeTallyLedger() {
+            const modal = document.getElementById('tallyLedgerModal');
+            modal.classList.add('hidden');
+            document.body.classList.remove('overflow-hidden');
+            document.body.classList.remove('printing-ledger');
+        }
+
+        function calculateLoanBalances(customerName, loanId) {
+            const customer = ledgerDatabase[customerName];
+            if (!customer || !customer.loans || !customer.loans[loanId]) {
+                return null;
+            }
+            
+            const txs = customer.loans[loanId];
+            const disbursalTx = txs.find(tx => tx.vchType === "Payment");
+            if (!disbursalTx) {
+                return null;
+            }
+            
+            const disbursalDate = parseIndianDate(disbursalTx.date);
+            const originalPrincipal = disbursalTx.debit;
+            
+            // Clean tx: filter out journals
+            let cleanTx = txs.filter(tx => tx.vchType !== "Journal" && !tx.particulars.toLowerCase().includes("interest a/c"));
+            let history = cleanTx.map(tx => ({
+                date: parseIndianDate(tx.date),
+                debit: tx.debit,
+                credit: tx.credit,
+                particulars: tx.particulars
+            })).sort((a, b) => a.date - b.date);
+            
+            let outstandingPrincipal = 0;
+            let accruedInterest = 0;
+            let lastDate = history[0].date;
+            
+            // Daily interest rate: 1.5% per month / 30 = 0.0005 per day
+            const DAILY_RATE = 0.015 / 30;
+            
+            let totalPrincipalPaid = 0;
+            let totalInterestPaid = 0;
+            
+            history.forEach(tx => {
+                const diffTime = tx.date - lastDate;
+                const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+                if (diffDays > 0) {
+                    accruedInterest += outstandingPrincipal * DAILY_RATE * diffDays;
+                }
+                
+                if (tx.debit > 0) {
+                    outstandingPrincipal += tx.debit;
+                }
+                
+                if (tx.credit > 0) {
+                    let creditRemaining = tx.credit;
+                    
+                    if (creditRemaining >= accruedInterest) {
+                        totalInterestPaid += accruedInterest;
+                        creditRemaining -= accruedInterest;
+                        accruedInterest = 0;
+                        
+                        const principalPaid = Math.min(outstandingPrincipal, creditRemaining);
+                        totalPrincipalPaid += principalPaid;
+                        outstandingPrincipal = Math.max(0, outstandingPrincipal - principalPaid);
+                    } else {
+                        totalInterestPaid += creditRemaining;
+                        accruedInterest -= creditRemaining;
+                    }
+                }
+                
+                lastDate = tx.date;
+            });
+            
+            const toDateInput = document.getElementById('reportToDate').value;
+            const toDateVal = toDateInput ? new Date(toDateInput) : new Date();
+            
+            if (toDateVal > lastDate && outstandingPrincipal > 0) {
+                const diffTime = toDateVal - lastDate;
+                const diffDays = Math.max(0, Math.floor(diffTime / (1000 * 60 * 60 * 24)));
+                if (diffDays > 0) {
+                    accruedInterest += outstandingPrincipal * DAILY_RATE * diffDays;
+                }
+            }
+            
+            accruedInterest = Math.round(accruedInterest);
+            totalInterestPaid = Math.round(totalInterestPaid);
+            totalPrincipalPaid = Math.round(totalPrincipalPaid);
+            
+            return {
+                originalPrincipal,
+                totalPrincipalPaid,
+                totalInterestPaid,
+                outstandingPrincipal,
+                outstandingInterest: accruedInterest,
+                disbursalDate: disbursalTx.date
+            };
+        }
+
+        function filterTallyLedgerTransactions() {
+            refreshLedgerDatabase();
+            const filterVal = document.getElementById('modalLoanFilter').value;
+            const customer = ledgerDatabase[currentCustomerName];
+            let list = [];
+            
+            if (customer && customer.loans) {
+                if (filterVal === 'all') {
+                    // Consolidated
+                    Object.keys(customer.loans).forEach(lId => {
+                        customer.loans[lId].forEach(tx => {
+                            list.push({ ...tx, loanId: lId });
+                        });
+                    });
+                    // Sort chronologically
+                    list.sort((a, b) => parseIndianDate(a.date) - parseIndianDate(b.date));
+                } else if (customer.loans[filterVal]) {
+                    // Filtered
+                    list = customer.loans[filterVal].map(tx => ({ ...tx, loanId: filterVal }));
+                }
+            }
+
+            // Update Summary Panel
+            const summaryPanel = document.getElementById('modalLoanSummaryPanel');
+            if (summaryPanel) {
+                if (filterVal === 'all') {
+                    summaryPanel.classList.add('hidden');
+                } else {
+                    summaryPanel.classList.remove('hidden');
+                    
+                    let registry = {};
+                    if (localStorage.getItem('loanRegistry')) {
+                        try {
+                            registry = JSON.parse(localStorage.getItem('loanRegistry'));
+                        } catch(e) {}
+                    }
+                    const loanInfo = registry[filterVal];
+                    const balances = calculateLoanBalances(currentCustomerName, filterVal);
+                    
+                    if (balances) {
+                        const assetName = loanInfo ? loanInfo.assetName : "Loan Asset";
+                        const grossWt = loanInfo ? loanInfo.grossWeight : "";
+                        const eligibleLimit = loanInfo ? loanInfo.eligibleLimit : 0;
+                        
+                        summaryPanel.innerHTML = `
+                            <div class="grid grid-cols-2 md:grid-cols-4 gap-sm text-[11px] text-gray-800">
+                                <div class="bg-white border border-gray-300 p-base rounded shadow-xs">
+                                    <p class="text-gray-500 font-bold uppercase text-[9px]">Loan Particulars</p>
+                                    <p class="font-bold text-[#004d4d]">${assetName} - ${grossWt}</p>
+                                    <p class="text-gray-600 mt-xs font-semibold">Disbursed: ${balances.disbursalDate}</p>
+                                </div>
+                                <div class="bg-white border border-gray-300 p-base rounded shadow-xs">
+                                    <p class="text-gray-500 font-bold uppercase text-[9px]">Original Principal</p>
+                                    <p class="font-bold text-sm text-[#004d4d]">${formatCurrency(balances.originalPrincipal)}</p>
+                                    <p class="text-gray-600 mt-xs">Max Eligible: ${formatCurrency(eligibleLimit)}</p>
+                                </div>
+                                <div class="bg-white border border-gray-300 p-base rounded shadow-xs text-right">
+                                    <p class="text-gray-500 font-bold uppercase text-[9px] text-left">Repayments To Date</p>
+                                    <p class="font-bold text-green-700 text-right">Principal Paid: ${formatCurrency(balances.totalPrincipalPaid)}</p>
+                                    <p class="font-bold text-green-700 mt-xs text-right">Interest Paid: ${formatCurrency(balances.totalInterestPaid)}</p>
+                                </div>
+                                <div class="bg-white border border-gray-300 p-base rounded shadow-xs text-right">
+                                    <p class="text-gray-500 font-bold uppercase text-[9px] text-left">Current Balances</p>
+                                    <p class="font-bold text-red-700 text-right">Out. Principal: ${formatCurrency(balances.outstandingPrincipal)}</p>
+                                    <p class="font-bold text-red-700 mt-xs text-right">Out. Interest: ${formatCurrency(balances.outstandingInterest)}</p>
+                                </div>
+                            </div>
+                        `;
+                    } else {
+                        summaryPanel.innerHTML = `
+                            <div class="text-center py-xs text-gray-500 italic font-bold">
+                                This loan is pending approval and has no active balances. / यह ऋण अभी लंबित है और कोई शेष राशि नहीं है।
+                            </div>
+                        `;
+                    }
+                }
+            }
+            
+            // Filter list by selected date range
+            const fromDateInput = document.getElementById('reportFromDate').value;
+            const toDateInput = document.getElementById('reportToDate').value;
+            if (fromDateInput && toDateInput) {
+                const fromDateVal = new Date(fromDateInput);
+                const toDateVal = new Date(toDateInput);
+                list = list.filter(tx => {
+                    const txDate = parseIndianDate(tx.date);
+                    return txDate >= fromDateVal && txDate <= toDateVal;
+                });
+            }
+            
+            const tbody = document.getElementById('modalLedgerBody');
+            tbody.innerHTML = '';
+            
+            let runningBalance = 0;
+            let totalDebit = 0;
+            let totalCredit = 0;
+            
+            if (list.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="p-4 text-center text-gray-500 font-sans italic">
+                            No ledger entries found for this selection. / इस चयन के लिए कोई खाता प्रविष्टि नहीं मिली।
+                        </td>
+                    </tr>
+                `;
+            } else {
+                list.forEach(tx => {
+                    runningBalance += (tx.debit - tx.credit);
+                    totalDebit += tx.debit;
+                    totalCredit += tx.credit;
+                    
+                    const drStr = tx.debit > 0 ? formatCurrency(tx.debit) : "";
+                    const crStr = tx.credit > 0 ? formatCurrency(tx.credit) : "";
+                    const balanceSuffix = runningBalance >= 0 ? " Dr" : " Cr";
+                    const balStr = formatCurrency(Math.abs(runningBalance)) + balanceSuffix;
+                    
+                    // Particulars description: show loan ID if consolidated
+                    const particularsText = filterVal === 'all' ? `${tx.particulars} [${tx.loanId}]` : tx.particulars;
+                    
+                    const tr = document.createElement('tr');
+                    tr.className = "hover:bg-gray-50";
+                    tr.innerHTML = `
+                        <td class="p-2 border-r border-gray-300">${tx.date}</td>
+                        <td class="p-2 border-r border-gray-300 text-left font-sans">${particularsText}</td>
+                        <td class="p-2 border-r border-gray-300 font-sans">${tx.vchType}</td>
+                        <td class="p-2 border-r border-gray-300 font-sans">${tx.vchNo}</td>
+                        <td class="p-2 border-r border-gray-300 text-right">${drStr}</td>
+                        <td class="p-2 border-r border-gray-300 text-right">${crStr}</td>
+                        <td class="p-2 text-right font-bold">${balStr}</td>
+                    `;
+                    tbody.appendChild(tr);
+                });
+            }
+            
+            // Closing balance logic to balance both columns
+            const netBalance = totalDebit - totalCredit;
+            const closingDateCell = document.getElementById('modalClosingDate');
+            const closingPartCell = document.getElementById('modalClosingParticulars');
+            const closingDrCell = document.getElementById('modalClosingDebit');
+            const closingCrCell = document.getElementById('modalClosingCredit');
+            
+            // Set closing date to the last transaction date or today
+            if (list.length > 0) {
+                closingDateCell.textContent = list[list.length - 1].date;
+            } else {
+                closingDateCell.textContent = "02-Jun-2026";
+            }
+            
+            let balancedTotal = 0;
+            if (netBalance >= 0) {
+                // Net Debit balance -> placed on Credit side to balance
+                closingPartCell.textContent = "By Closing Balance";
+                closingDrCell.textContent = "";
+                closingCrCell.textContent = formatCurrency(Math.abs(netBalance));
+                balancedTotal = totalDebit;
+            } else {
+                // Net Credit balance -> placed on Debit side to balance
+                closingPartCell.textContent = "To Closing Balance";
+                closingDrCell.textContent = formatCurrency(Math.abs(netBalance));
+                closingCrCell.textContent = "";
+                balancedTotal = totalCredit;
+            }
+            
+            // Update Totals
+            document.getElementById('modalTotalDebit').textContent = formatCurrency(balancedTotal);
+            document.getElementById('modalTotalCredit').textContent = formatCurrency(balancedTotal);
+            
+            const netBalanceSuffix = netBalance >= 0 ? " Dr" : " Cr";
+            document.getElementById('modalClosingStatus').textContent = formatCurrency(Math.abs(netBalance)) + netBalanceSuffix;
+        }
+
+        function printTallyLedger() {
+            document.body.classList.add('printing-ledger');
+            window.print();
+            // Automatically clean up class when user finishes printing
+            setTimeout(() => {
+                document.body.classList.remove('printing-ledger');
+            }, 1000);
+        }
+
+        function exportTallyLedger() {
+            alert("Exporting Ledger as Excel (Tally XML format compatible)... Saved to Downloads!");
+        }
+
+        // Close on ESC key or click outside modal
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                closeTallyLedger();
+            }
+            if (e.altKey && e.key.toLowerCase() === 'p') {
+                e.preventDefault();
+                printTallyLedger();
+            }
+            if (e.altKey && e.key.toLowerCase() === 'e') {
+                e.preventDefault();
+                exportTallyLedger();
+            }
+        });
+
+        // Close on overlay backdrop click
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('tallyLedgerModal');
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        closeTallyLedger();
+                    }
+                });
+            }
+        });
+
+        // Dynamic search filtering for Customer Ledger
+        document.addEventListener('DOMContentLoaded', () => {
+            const searchInput = document.getElementById('ledgerSearchInput');
+            if (searchInput) {
+                searchInput.addEventListener('input', (e) => {
+                    const query = e.target.value.toLowerCase().trim();
+                    const rows = document.querySelectorAll('#ledgerTableBody tr');
+                    let matches = 0;
+                    
+                    rows.forEach(row => {
+                        const text = row.textContent.toLowerCase();
+                        if (text.includes(query)) {
+                            row.classList.remove('hidden');
+                            matches++;
+                        } else {
+                            row.classList.add('hidden');
+                        }
+                    });
+                    
+                    const noResults = document.getElementById('noLedgerResults');
+                    const table = document.getElementById('ledgerTable');
+                    if (matches === 0) {
+                        noResults.classList.remove('hidden');
+                        table.classList.add('hidden');
+                    } else {
+                        noResults.classList.add('hidden');
+                        table.classList.remove('hidden');
+                    }
+                });
+            }
+        });
+
+        function applyDateFilter() {
+            refreshLedgerDatabase();
+            
+            const fromDateInput = document.getElementById('reportFromDate').value;
+            const toDateInput = document.getElementById('reportToDate').value;
+            
+            if (!fromDateInput || !toDateInput) {
+                return;
+            }
+            
+            const fromDateVal = new Date(fromDateInput);
+            const toDateVal = new Date(toDateInput);
+            
+            if (fromDateVal > toDateVal) {
+                alert("From Date cannot be after To Date!");
+                return;
+            }
+            
+            let registry = {};
+            if (localStorage.getItem('loanRegistry')) {
+                try {
+                    registry = JSON.parse(localStorage.getItem('loanRegistry'));
+                } catch(e) {}
+            }
+            
+            const rows = document.querySelectorAll('#ledgerTableBody tr');
+            rows.forEach(row => {
+                const loanIdCell = row.cells[0];
+                if (loanIdCell) {
+                    const loanId = loanIdCell.textContent.trim();
+                    const loanInfo = registry[loanId];
+                    if (loanInfo) {
+                        let hasTransactions = false;
+                        const customer = ledgerDatabase[loanInfo.customerName];
+                        if (customer && customer.loans && customer.loans[loanId]) {
+                            const txs = customer.loans[loanId];
+                            
+                            const insideRange = txs.some(tx => {
+                                const d = parseIndianDate(tx.date);
+                                return d >= fromDateVal && d <= toDateVal;
+                            });
+                            
+                            const disbursalTx = txs.find(tx => tx.vchType === "Payment");
+                            const isDisbursedBeforeEnd = disbursalTx && parseIndianDate(disbursalTx.date) <= toDateVal;
+                            
+                            if (insideRange || isDisbursedBeforeEnd) {
+                                hasTransactions = true;
+                            }
+                        } else {
+                            hasTransactions = true;
+                        }
+                        
+                        if (hasTransactions) {
+                            row.classList.remove('hidden');
+                        } else {
+                            row.classList.add('hidden');
+                        }
+                    }
+                }
+            });
+            
+            if (!document.getElementById('tallyLedgerModal').classList.contains('hidden') && currentCustomerName) {
+                document.getElementById('modalPeriod').textContent = getFormattedPeriodText(fromDateInput, toDateInput);
+                filterTallyLedgerTransactions();
+            }
+            
+            recalculateSummaryMetrics(fromDateVal, toDateVal);
+        }
+        
+        function getFormattedPeriodText(fromDateStr, toDateStr) {
+            const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+            const parseInputDateToIndian = (dStr) => {
+                const parts = dStr.split('-');
+                const y = parts[0];
+                const m = months[parseInt(parts[1], 10) - 1];
+                const d = String(parseInt(parts[2], 10)).padStart(2, '0');
+                return `${d}-${m}-${y}`;
+            }
+            return `Period: ${parseInputDateToIndian(fromDateStr)} to ${parseInputDateToIndian(toDateStr)}`;
+        }
+        
+        function resetDateFilter() {
+            document.getElementById('reportFromDate').value = "2026-04-01";
+            document.getElementById('reportToDate').value = "2026-06-02";
+            applyDateFilter();
+        }
+
+        function recalculateSummaryMetrics(fromDateVal, toDateVal) {
+            const DAILY_RATE = 0.015 / 30; // 1.5% monthly
+            
+            let outstandingPrincipalTotal = 0;
+            let interestIncomeTotal = 0;
+            let goldWeightTotal = 0;
+            let silverWeightTotal = 0;
+            
+            let registry = {};
+            if (localStorage.getItem('loanRegistry')) {
+                try {
+                    registry = JSON.parse(localStorage.getItem('loanRegistry'));
+                } catch(e) {}
+            }
+            
+            Object.keys(ledgerDatabase).forEach(custName => {
+                const customer = ledgerDatabase[custName];
+                if (customer && customer.loans) {
+                    Object.keys(customer.loans).forEach(loanId => {
+                        const txs = customer.loans[loanId];
+                        const disbursalTx = txs.find(tx => tx.vchType === "Payment");
+                        if (!disbursalTx) return;
+                        
+                        const disbursalDate = parseIndianDate(disbursalTx.date);
+                        if (disbursalDate > toDateVal) return;
+                        
+                        const loanInfo = registry[loanId];
+                        if (loanInfo) {
+                            const isGold = loanInfo.assetName && loanInfo.assetName.toLowerCase().includes('gold');
+                            const netWt = parseFloat(loanInfo.netWeight) || 0;
+                            if (isGold) {
+                                goldWeightTotal += netWt;
+                            } else {
+                                silverWeightTotal += netWt;
+                            }
+                        }
+                        
+                        let principal = 0;
+                        let accruedInterest = 0;
+                        let lastDate = disbursalDate;
+                        
+                        const activeTxs = txs.filter(tx => tx.vchType !== "Journal").map(tx => ({
+                            date: parseIndianDate(tx.date),
+                            debit: tx.debit,
+                            credit: tx.credit
+                        })).sort((a, b) => a.date - b.date);
+                        
+                        activeTxs.forEach(tx => {
+                            if (tx.date > toDateVal) return;
+                            
+                            const diffDays = Math.max(0, Math.floor((tx.date - lastDate) / (1000 * 60 * 60 * 24)));
+                            if (diffDays > 0) {
+                                accruedInterest += principal * DAILY_RATE * diffDays;
+                                for (let d = 0; d < diffDays; d++) {
+                                    const currentDay = new Date(lastDate.getTime() + d * 24 * 60 * 60 * 1000);
+                                    if (currentDay >= fromDateVal && currentDay <= toDateVal) {
+                                        interestIncomeTotal += principal * DAILY_RATE;
+                                    }
+                                }
+                            }
+                            
+                            if (tx.debit > 0) principal += tx.debit;
+                            if (tx.credit > 0) {
+                                if (tx.credit >= accruedInterest) {
+                                    const remainingCredit = tx.credit - accruedInterest;
+                                    accruedInterest = 0;
+                                    principal = Math.max(0, principal - remainingCredit);
+                                } else {
+                                    accruedInterest -= tx.credit;
+                                }
+                            }
+                            lastDate = tx.date;
+                        });
+                        
+                        if (toDateVal > lastDate && principal > 0) {
+                            const diffDays = Math.max(0, Math.floor((toDateVal - lastDate) / (1000 * 60 * 60 * 24)));
+                            if (diffDays > 0) {
+                                accruedInterest += principal * DAILY_RATE * diffDays;
+                                for (let d = 0; d < diffDays; d++) {
+                                    const currentDay = new Date(lastDate.getTime() + d * 24 * 60 * 60 * 1000);
+                                    if (currentDay >= fromDateVal && currentDay <= toDateVal) {
+                                        interestIncomeTotal += principal * DAILY_RATE;
+                                    }
+                                }
+                            }
+                        }
+                        
+                        outstandingPrincipalTotal += principal;
+                    });
+                }
+            });
+            
+            const scaleMultiplier = 20;
+            const displayOutstandingPrincipal = outstandingPrincipalTotal * scaleMultiplier;
+            const displayGoldWeight = goldWeightTotal * scaleMultiplier;
+            const displaySilverWeight = silverWeightTotal * scaleMultiplier;
+            
+            // Dynamic market rates from localStorage
+            const goldRatePerGram = parseFloat(localStorage.getItem('gold_rate')) || 7240.50; // Per gram 24K fine
+            const silverRatePerGram = parseFloat(localStorage.getItem('silver_rate')) || 91.20;   // Per gram fine
+            
+            // Live rates per 10g: Gold (22K) is 91.6% purity of 24K fine, Silver (Fine) is fine rate
+            const gold22KRatePer10g = Math.round(10 * goldRatePerGram * 0.916);
+            const silverRatePer10g = Math.round(10 * silverRatePerGram);
+            
+            const goldRateEl = document.getElementById('liveGoldRateDisplay');
+            if (goldRateEl) {
+                goldRateEl.textContent = '₹ ' + gold22KRatePer10g.toLocaleString('en-IN');
+            }
+            const silverRateEl = document.getElementById('liveSilverRateDisplay');
+            if (silverRateEl) {
+                silverRateEl.textContent = '₹ ' + silverRatePer10g.toLocaleString('en-IN');
+            }
+
+            const goldMarketValue = displayGoldWeight * goldRatePerGram;
+            const silverMarketValue = displaySilverWeight * silverRatePerGram;
+            const displayTotalPortfolioValue = goldMarketValue + silverMarketValue;
+            
+            const displayInterestIncome = interestIncomeTotal * scaleMultiplier;
+            
+            const daysInRange = Math.max(1, Math.floor((toDateVal - fromDateVal) / (1000 * 60 * 60 * 24)));
+            const displayOpExpenses = Math.min(345000, daysInRange * 5500);
+            const displayNetSurplus = displayInterestIncome - displayOpExpenses;
+            
+            document.getElementById('summaryTotalPortfolio').textContent = formatCurrencyWithoutDecimals(displayTotalPortfolioValue);
+            document.getElementById('summaryOutstandingPrincipal').textContent = formatCurrencyWithoutDecimals(displayOutstandingPrincipal);
+            
+            document.getElementById('summaryTotalGold').textContent = displayGoldWeight.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " g";
+            document.getElementById('summaryTotalSilver').textContent = displaySilverWeight.toLocaleString('en-IN', { minimumFractionDigits: 2, maximumFractionDigits: 2 }) + " g";
+            document.getElementById('summaryValuationResultText').textContent = formatCurrencyWithoutDecimals(displayTotalPortfolioValue);
+            
+            document.getElementById('summaryInterestIncome').textContent = formatCurrencyWithoutDecimals(displayInterestIncome);
+            document.getElementById('summaryNetSurplus').textContent = formatCurrencyWithoutDecimals(displayNetSurplus);
+            
+            document.getElementById('summaryVaultAssets').textContent = formatCurrencyWithoutDecimals(displayOutstandingPrincipal);
+            const dynamicCashInHand = Math.max(100000, 520000 + (displayInterestIncome - displayOpExpenses) * 0.4);
+            document.getElementById('summaryCashInHand').textContent = formatCurrencyWithoutDecimals(dynamicCashInHand);
+            
+            const totalAssets = dynamicCashInHand + displayOutstandingPrincipal;
+            document.getElementById('summaryOwnerCapital').textContent = formatCurrencyWithoutDecimals(totalAssets);
+        }
+
+        function formatCurrencyWithoutDecimals(amount) {
+            return '₹ ' + Math.round(amount).toLocaleString('en-IN');
+        }
+
+        // Auto-open ledger if redirecting from receipt module and sync status badges
+        document.addEventListener('DOMContentLoaded', () => {
+            const defaultLoanRegistry = {
+                "LN-2026-001": {
+                    customerName: "Ramesh Kumar",
+                    mobile: "98765 43210",
+                    assetName: "Gold Necklace (22K)",
+                    grossWeight: "45.50g",
+                    netWeight: "41.80g",
+                    eligibleLimit: 246750,
+                    status: "Disbursed",
+                    disbursedAmount: 246750,
+                    disbursalDate: "01-Apr-2026"
+                },
+                "LN-2026-002": {
+                    customerName: "Sita Devi",
+                    mobile: "94140 12345",
+                    assetName: "Silver Anklets (92.5%)",
+                    grossWeight: "120.00g",
+                    netWeight: "111.00g",
+                    eligibleLimit: 8100,
+                    status: "Disbursed",
+                    disbursedAmount: 8100,
+                    disbursalDate: "10-May-2026"
+                },
+                "LN-2026-003": {
+                    customerName: "Harish Verma",
+                    mobile: "70141 98765",
+                    assetName: "Gold Bangles (22K)",
+                    grossWeight: "82.30g",
+                    netWeight: "75.70g",
+                    eligibleLimit: 447000,
+                    status: "Pending Approval",
+                    disbursedAmount: 0,
+                    disbursalDate: "02-Jun-2026"
+                },
+                "LN-2026-004": {
+                    customerName: "Kamla Devi",
+                    mobile: "88902 54321",
+                    assetName: "Gold Ring (20K)",
+                    grossWeight: "12.40g",
+                    netWeight: "11.20g",
+                    eligibleLimit: 60400,
+                    status: "Disbursed",
+                    disbursedAmount: 60400,
+                    disbursalDate: "10-Apr-2026"
+                },
+                "LN-2026-005": {
+                    customerName: "Rajesh Sharma",
+                    mobile: "96321 09876",
+                    assetName: "Silver Plate (99.9%)",
+                    grossWeight: "500.00g",
+                    netWeight: "495.00g",
+                    eligibleLimit: 34200,
+                    status: "Disbursed",
+                    disbursedAmount: 34200,
+                    disbursalDate: "01-May-2026"
+                },
+                "LN-2026-006": {
+                    customerName: "Ramesh Kumar",
+                    mobile: "98765 43210",
+                    assetName: "Gold Rings (18K)",
+                    grossWeight: "12.50g",
+                    netWeight: "10.30g",
+                    eligibleLimit: 95000,
+                    status: "Disbursed",
+                    disbursedAmount: 95000,
+                    disbursalDate: "15-May-2026"
+                }
+            };
+            
+            let registry = defaultLoanRegistry;
+            if (localStorage.getItem('loanRegistry')) {
+                try {
+                    registry = JSON.parse(localStorage.getItem('loanRegistry'));
+                    let updated = false;
+                    for (const key in defaultLoanRegistry) {
+                        if (!registry[key] || !registry[key].assetName) {
+                            registry[key] = defaultLoanRegistry[key];
+                            updated = true;
+                        } else if (!registry[key].disbursalDate && defaultLoanRegistry[key].disbursalDate) {
+                            registry[key].disbursalDate = defaultLoanRegistry[key].disbursalDate;
+                            updated = true;
+                        }
+                    }
+                    if (updated) {
+                        localStorage.setItem('loanRegistry', JSON.stringify(registry));
+                    }
+                } catch(e) {
+                    console.error(e);
+                }
+            } else {
+                localStorage.setItem('loanRegistry', JSON.stringify(registry));
+            }
+            
+            // Loop through rows in table and update status badge and date
+            const rows = document.querySelectorAll('#ledgerTableBody tr');
+            rows.forEach(row => {
+                const loanIdCell = row.cells[0];
+                if (loanIdCell) {
+                    const loanId = loanIdCell.textContent.trim();
+                    const loanInfo = registry[loanId];
+                    if (loanInfo) {
+                        const dateCell = row.cells[3];
+                        if (dateCell && loanInfo.disbursalDate) {
+                            dateCell.textContent = loanInfo.disbursalDate;
+                        }
+                        const statusCell = row.cells[6];
+                        if (statusCell) {
+                            if (loanInfo.status === "Disbursed") {
+                                statusCell.innerHTML = `<span class="bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400 px-base py-xs rounded-full text-xs font-bold">Disbursed</span>`;
+                            } else if (loanInfo.status === "Pending Approval") {
+                                statusCell.innerHTML = `<span class="bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400 px-base py-xs rounded-full text-xs font-bold">Pending Approval</span>`;
+                            }
+                        }
+                    }
+                }
+            });
+
+            const urlParams = new URLSearchParams(window.location.search);
+            const tabParam = urlParams.get('tab');
+            const customerParam = urlParams.get('customer');
+            const loanParam = urlParams.get('loanId');
+            
+            if (tabParam) {
+                switchTab(tabParam);
+            }
+            if (customerParam) {
+                setTimeout(() => {
+                    openTallyLedger(customerParam, loanParam || 'all');
+                }, 100);
+            }
+
+            // Run initial date filter to update all metrics on page load
+            applyDateFilter();
+        });
+    
+        function toggleSideDrawer(open) {
+            const drawer = document.getElementById('sideDrawer');
+            const drawerContent = document.getElementById('sideDrawerContent');
+            if (!drawer || !drawerContent) return;
+            
+            if (open) {
+                drawer.classList.remove('hidden');
+                // trigger reflow
+                void drawer.offsetWidth;
+                drawerContent.classList.remove('-translate-x-full');
+            } else {
+                drawerContent.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function logoutAgent() {
+            if (confirm("Are you sure you want to logout? / क्या आप लॉगआउट करना चाहते हैं?")) {
+                alert("Logging out securely... Clearing agent session.");
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                toggleSideDrawer(false);
+            }
+        });
+
+</script>
+</body></html>

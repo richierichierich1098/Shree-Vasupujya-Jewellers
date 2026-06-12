@@ -1,0 +1,426 @@
+<!DOCTYPE html><html class="light" lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+            vertical-align: middle;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "on-tertiary-fixed-variant": "#3d4759",
+                        "error-container": "#ffdad6",
+                        "on-surface": "#191c1e",
+                        "primary-container": "#1a365d",
+                        "surface-container-low": "#f2f4f6",
+                        "surface-variant": "#e0e3e5",
+                        "on-error-container": "#93000a",
+                        "error": "#ba1a1a",
+                        "outline": "#74777f",
+                        "surface-dim": "#d8dadc",
+                        "surface-container-lowest": "#ffffff",
+                        "primary-fixed": "#d6e3ff",
+                        "on-background": "#191c1e",
+                        "on-tertiary-fixed": "#121c2c",
+                        "on-secondary-fixed": "#241a00",
+                        "secondary-fixed-dim": "#e9c349",
+                        "on-primary-container": "#86a0cd",
+                        "primary": "#002045",
+                        "surface-container-high": "#e6e8ea",
+                        "secondary": "#735c00",
+                        "tertiary-fixed": "#d9e3f9",
+                        "surface-tint": "#455f88",
+                        "on-primary": "#ffffff",
+                        "on-surface-variant": "#43474e",
+                        "surface": "#f7f9fb",
+                        "primary-fixed-dim": "#adc7f7",
+                        "on-primary-fixed-variant": "#2d476f",
+                        "tertiary-container": "#2c3647",
+                        "on-secondary-container": "#745c00",
+                        "tertiary-fixed-dim": "#bdc7dc",
+                        "background": "#f7f9fb",
+                        "on-tertiary-container": "#959fb3",
+                        "on-secondary": "#ffffff",
+                        "secondary-fixed": "#ffe088",
+                        "surface-container-highest": "#e0e3e5",
+                        "surface-container": "#eceef0",
+                        "on-primary-fixed": "#001b3c",
+                        "on-secondary-fixed-variant": "#574500",
+                        "on-tertiary": "#ffffff",
+                        "on-error": "#ffffff",
+                        "outline-variant": "#c4c6cf",
+                        "inverse-on-surface": "#eff1f3",
+                        "secondary-container": "#fed65b",
+                        "surface-bright": "#f7f9fb",
+                        "tertiary": "#172131",
+                        "inverse-surface": "#2d3133",
+                        "inverse-primary": "#adc7f7"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.125rem",
+                        "lg": "0.25rem",
+                        "xl": "0.5rem",
+                        "full": "0.75rem"
+                    },
+                    "spacing": {
+                        "sm": "12px",
+                        "xs": "4px",
+                        "touch-target": "48px",
+                        "base": "8px",
+                        "lg": "40px",
+                        "md": "24px",
+                        "gutter": "16px",
+                        "margin-mobile": "20px"
+                    },
+                    "fontSize": {
+                        "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                        "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                        "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                        "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                        "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                        "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                        "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background text-on-background min-h-screen pb-24">
+<!-- Top App Bar -->
+<!-- Side Navigation Drawer -->
+<div id="sideDrawer" class="fixed inset-0 z-50 hidden no-print">
+    <!-- Backdrop overlay -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity duration-300" onclick="toggleSideDrawer(false)"></div>
+    <!-- Drawer Content -->
+    <div class="fixed top-0 left-0 h-full w-[280px] bg-white dark:bg-zinc-900 border-r border-outline-variant shadow-2xl flex flex-col justify-between p-md transition-transform duration-300 transform -translate-x-full z-50" id="sideDrawerContent">
+        <div class="space-y-md">
+            <!-- Drawer Header -->
+            <div class="flex items-center justify-between pb-sm border-b border-outline-variant">
+                <div class="flex items-center gap-base">
+                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                    <div>
+                        <h3 class="font-headline-md text-sm font-bold text-primary">Bharat Loan Manager</h3>
+                        <p class="text-[10px] text-on-surface-variant/80 font-mono">Agent ID: 8821</p>
+                    </div>
+                </div>
+                <button onclick="toggleSideDrawer(false)" class="p-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            <!-- Drawer Navigation Items -->
+            <nav class="flex flex-col gap-xs pt-sm">
+                <a href="dashboard.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">dashboard</span>
+                    <span>Dashboard / मुख्य पृष्ठ</span>
+                </a>
+                <a href="kyc.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">person_add</span>
+                    <span>Customers / ग्राहक सूची</span>
+                </a>
+                <a href="valuation.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">payments</span>
+                    <span>Valuation / मूल्यांकन</span>
+                </a>
+                <a href="reports.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">analytics</span>
+                    <span>Reports / रिपोर्ट</span>
+                </a>
+            </nav>
+        </div>
+        <!-- Drawer Footer / Logout -->
+        <div class="pt-sm border-t border-outline-variant">
+            <button onclick="logoutAgent()" class="w-full flex items-center justify-center gap-base h-touch-target bg-red-100 hover:bg-red-600 hover:text-white text-red-700 rounded-xl font-label-caps text-xs transition-all active:scale-95">
+                <span class="material-symbols-outlined text-xl">logout</span>
+                <span>LOGOUT / लॉगआउट</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container border-b border-outline-variant shadow-sm">
+<div class="flex items-center gap-base">
+<button onclick="toggleSideDrawer(true)" class="text-on-primary dark:text-on-primary-container hover:bg-primary-fixed-dim/10 p-base rounded-full">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Bharat Loan Manager</h1>
+</div>
+<div class="flex items-center gap-base">
+<div class="flex items-center text-on-primary/80 gap-xs px-base">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud_done">cloud_done</span>
+<span class="text-[12px] font-bold">SYNCED</span>
+</div>
+<button class="text-on-primary dark:text-on-primary-container hover:bg-primary-fixed-dim/10 p-base rounded-full">
+<span class="material-symbols-outlined" data-icon="translate">translate</span>
+</button>
+</div>
+</header>
+<main class="mt-20 px-margin-mobile max-w-2xl mx-auto">
+<!-- Breadcrumb / Context -->
+<div class="py-md flex items-center gap-xs">
+<span class="text-on-surface-variant font-label-caps text-label-caps">VALUATION</span>
+<span class="material-symbols-outlined text-outline" data-icon="chevron_right">chevron_right</span>
+<span class="text-primary font-label-caps text-label-caps uppercase">New Ornament Entry</span>
+</div>
+<!-- Material Switcher -->
+<div class="bg-surface-container rounded-xl p-xs flex mb-lg border border-outline-variant">
+<button class="flex-1 py-base px-md rounded-full font-label-caps text-label-caps transition-all duration-200 flex items-center justify-center gap-base bg-primary text-on-primary shadow-sm" id="goldToggle" onclick="setMetal('gold')">
+<span class="material-symbols-outlined" data-icon="brightness_7">brightness_7</span>
+                GOLD (सोना)
+            </button>
+<button class="flex-1 py-base px-md rounded-full font-label-caps text-label-caps transition-all duration-200 flex items-center justify-center gap-base text-on-surface-variant hover:bg-surface-container-highest" id="silverToggle" onclick="setMetal('silver')">
+<span class="material-symbols-outlined" data-icon="brightness_5">brightness_5</span>
+                SILVER (चांदी)
+            </button>
+</div>
+<!-- Input Section -->
+<section class="space-y-md">
+<!-- Description -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">DESCRIPTION / आभूषण का विवरण</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg text-on-surface placeholder:text-outline/50" placeholder="e.g. Traditional Gold Bangles (2 pairs)" type="text">
+</div>
+<!-- Weight -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md">
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">GROSS WEIGHT / कुल वजन (g)</label>
+<div class="flex items-center">
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-value-display text-value-display text-on-surface" id="grossWeight" oninput="calculate()" placeholder="0.000" step="0.001" type="number">
+<span class="font-bold text-outline">GMS</span>
+</div>
+</div>
+<!-- Purity -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl p-md">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">PURITY / शुद्धता (%)</label>
+<select class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg text-on-surface appearance-none" id="purityDropdown" onchange="handlePurityChange()"><option value="91.6" selected="">22K (91.6%)</option><option value="83.3">20K (83.3%)</option><option value="75.0">18K (75.0%)</option><option value="custom">Custom %</option></select>
+</div>
+</div>
+<div class="hidden animate-in fade-in slide-in-from-top-1 bg-surface-container-low border border-outline-variant rounded-xl p-md" id="customPurityContainer">
+<label class="block font-label-caps text-label-caps text-on-surface-variant mb-xs">CUSTOM PURITY / कस्टम शुद्धता %</label>
+<input class="w-full bg-transparent border-none p-0 focus:ring-0 font-body-lg text-body-lg text-on-surface" id="customPurity" oninput="calculate()" placeholder="Enter %" step="0.1" type="number">
+</div>
+</section>
+<!-- Live Valuation Box -->
+<section class="mt-lg relative">
+<div class="absolute -left-2 top-0 bottom-0 w-2 bg-secondary-fixed rounded-l-full shadow-inner"></div>
+<div class="bg-surface-container-highest border border-outline-variant rounded-r-xl p-lg shadow-sm">
+<div class="flex items-center gap-base mb-md border-b border-outline-variant pb-base">
+<span class="material-symbols-outlined text-primary" data-icon="analytics">analytics</span>
+<h2 class="font-headline-md text-headline-md">Live Valuation Calculation</h2>
+</div>
+<div class="space-y-base">
+<!-- Fine Weight -->
+<div class="flex justify-between items-center py-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Fine Weight</span>
+<span class="text-[11px] text-outline">शुद्ध वजन (99.9% Equivalent)</span>
+</div>
+<div class="text-right">
+<span class="font-value-display text-value-display text-primary" id="resFineWeight">0.000</span>
+<span class="font-label-caps text-label-caps text-primary ml-xs">g</span>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant w-full"></div>
+<!-- Market Value -->
+<div class="flex justify-between items-center py-xs">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-surface-variant uppercase">Market Value</span>
+<span class="text-[11px] text-outline">बाजार मूल्य (@ ₹<span id="rateLabel" class="">7,240.5</span>/g)</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-surface-variant mr-xs">₹</span>
+<span class="font-value-display text-value-display text-on-surface" id="resMarketValue">0.00</span>
+</div>
+</div>
+<div class="h-[1px] bg-outline-variant w-full"></div>
+<!-- Max Loan -->
+<div class="flex justify-between items-center py-xs bg-secondary-container/30 -mx-gutter px-gutter rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-caps text-label-caps text-on-secondary-container uppercase">Max Loan (75% LTV)</span>
+<span class="text-[11px] text-on-secondary-fixed-variant">अधिकतम ऋण राशि</span>
+</div>
+<div class="text-right">
+<span class="font-label-caps text-label-caps text-on-secondary-container mr-xs">₹</span>
+<span class="text-[28px] font-bold leading-none text-on-secondary-container" id="resMaxLoan">0.00</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Image Upload Mock -->
+<section class="mt-lg">
+<div class="border-2 border-dashed border-outline-variant rounded-xl p-lg flex flex-col items-center justify-center bg-surface-container-low hover:bg-surface-container transition-colors cursor-pointer group">
+<span class="material-symbols-outlined text-[48px] text-outline group-hover:text-primary mb-base" data-icon="photo_camera">photo_camera</span>
+<p class="font-body-md text-body-md text-on-surface-variant text-center">Tap to capture ornament photos</p>
+<p class="text-[12px] text-outline">At least 3 angles required for KYC</p>
+</div>
+</section>
+<!-- CTA -->
+<div class="mt-lg pb-md">
+<button onclick="window.location.href='disbursal.html'" class="w-full py-md px-lg bg-primary text-on-primary rounded-xl font-headline-md text-headline-md shadow-lg flex items-center justify-center gap-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="check_circle">check_circle</span>
+                Approve &amp; Finalize Terms
+            </button>
+<p class="text-center mt-base text-[12px] text-outline">Officer Rajesh Kumar • Field Agent ID: 8821</p>
+</div>
+</main>
+<!-- Bottom Nav -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant">
+<button onclick="window.location.href='dashboard.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-label-caps mt-xs">Dashboard</span>
+</button>
+<button onclick="window.location.href='kyc.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label-caps text-label-caps mt-xs">Customers</span>
+</button>
+<button onclick="window.location.href='valuation.html'" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-base">
+<span class="material-symbols-outlined" data-icon="payments" style="font-variation-settings: 'FILL' 1;">payments</span>
+<span class="font-label-caps text-label-caps mt-xs">Valuation</span>
+</button>
+<button onclick="window.location.href='reports.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high transition-colors rounded-xl">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-label-caps mt-xs">Reports</span>
+</button>
+</nav>
+<script>
+        let currentMetal = 'gold';
+        const GOLD_RATE = parseFloat(localStorage.getItem('gold_rate')) || 7240.50; // Per gram 24K fine
+        const SILVER_RATE = parseFloat(localStorage.getItem('silver_rate')) || 91.20;  // Per gram fine
+
+        const goldOptions = [
+            { label: '22K (91.6%)', value: 91.6 },
+            { label: '20K (83.3%)', value: 83.3 },
+            { label: '18K (75.0%)', value: 75.0 },
+            { label: 'Custom %', value: 'custom' }
+        ];
+
+        const silverOptions = [
+            { label: '99.9% (Fine)', value: 99.9 },
+            { label: '92.5% (Sterling)', value: 92.5 },
+            { label: 'Custom %', value: 'custom' }
+        ];
+
+        function setMetal(metal) {
+            if (metal === 'silver') {
+                window.location.href = 'silver-valuation.html';
+                return;
+            }
+            currentMetal = metal;
+            const goldBtn = document.getElementById('goldToggle');
+            const silverBtn = document.getElementById('silverToggle');
+            const dropdown = document.getElementById('purityDropdown');
+            const rateLabel = document.getElementById('rateLabel');
+
+            if (metal === 'gold') {
+                goldBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                goldBtn.classList.remove('text-on-surface-variant');
+                silverBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                silverBtn.classList.add('text-on-surface-variant');
+                rateLabel.innerText = GOLD_RATE.toLocaleString();
+                populateDropdown(goldOptions);
+            } else {
+                silverBtn.classList.add('bg-primary', 'text-on-primary', 'shadow-sm');
+                silverBtn.classList.remove('text-on-surface-variant');
+                goldBtn.classList.remove('bg-primary', 'text-on-primary', 'shadow-sm');
+                goldBtn.classList.add('text-on-surface-variant');
+                rateLabel.innerText = SILVER_RATE.toLocaleString();
+                populateDropdown(silverOptions);
+            }
+            calculate();
+        }
+
+        function populateDropdown(options) {
+            const dropdown = document.getElementById('purityDropdown');
+            dropdown.innerHTML = '';
+            options.forEach(opt => {
+                const el = document.createElement('option');
+                el.value = opt.value;
+                el.innerText = opt.label;
+                dropdown.appendChild(el);
+            });
+            handlePurityChange();
+        }
+
+        function handlePurityChange() {
+            const dropdown = document.getElementById('purityDropdown');
+            const customContainer = document.getElementById('customPurityContainer');
+            if (dropdown.value === 'custom') {
+                customContainer.classList.remove('hidden');
+            } else {
+                customContainer.classList.add('hidden');
+            }
+            calculate();
+        }
+
+        function calculate() {
+            const gross = parseFloat(document.getElementById('grossWeight').value) || 0;
+            const dropdown = document.getElementById('purityDropdown');
+            let purity = 0;
+
+            if (dropdown.value === 'custom') {
+                purity = parseFloat(document.getElementById('customPurity').value) || 0;
+            } else {
+                purity = parseFloat(dropdown.value) || 0;
+            }
+
+            const fineWeight = (gross * (purity / 100));
+            const rate = currentMetal === 'gold' ? GOLD_RATE : SILVER_RATE;
+            const marketValue = fineWeight * rate;
+            const maxLoan = marketValue * 0.75;
+
+            document.getElementById('resFineWeight').innerText = fineWeight.toFixed(3);
+            document.getElementById('resMarketValue').innerText = marketValue.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+            document.getElementById('resMaxLoan').innerText = maxLoan.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2});
+        }
+
+        // Init
+        setMetal('gold');
+    
+        function toggleSideDrawer(open) {
+            const drawer = document.getElementById('sideDrawer');
+            const drawerContent = document.getElementById('sideDrawerContent');
+            if (!drawer || !drawerContent) return;
+            
+            if (open) {
+                drawer.classList.remove('hidden');
+                // trigger reflow
+                void drawer.offsetWidth;
+                drawerContent.classList.remove('-translate-x-full');
+            } else {
+                drawerContent.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function logoutAgent() {
+            if (confirm("Are you sure you want to logout? / क्या आप लॉगआउट करना चाहते हैं?")) {
+                alert("Logging out securely... Clearing agent session.");
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                toggleSideDrawer(false);
+            }
+        });
+
+</script>
+
+
+</body></html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Customer KYC Registration - Bharat Loan Manager</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 48;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F8FAFC;
+        }
+        /* Custom scrollbar for a clean UI */
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: #f1f1f1; }
+        ::-webkit-scrollbar-thumb { background: #1a365d; border-radius: 10px; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-tertiary-fixed-variant": "#3d4759",
+                      "error-container": "#ffdad6",
+                      "on-surface": "#191c1e",
+                      "primary-container": "#1a365d",
+                      "surface-container-low": "#f2f4f6",
+                      "surface-variant": "#e0e3e5",
+                      "on-error-container": "#93000a",
+                      "error": "#ba1a1a",
+                      "outline": "#74777f",
+                      "surface-dim": "#d8dadc",
+                      "surface-container-lowest": "#ffffff",
+                      "primary-fixed": "#d6e3ff",
+                      "on-background": "#191c1e",
+                      "on-tertiary-fixed": "#121c2c",
+                      "on-secondary-fixed": "#241a00",
+                      "secondary-fixed-dim": "#e9c349",
+                      "on-primary-container": "#86a0cd",
+                      "primary": "#002045",
+                      "surface-container-high": "#e6e8ea",
+                      "secondary": "#735c00",
+                      "tertiary-fixed": "#d9e3f9",
+                      "surface-tint": "#455f88",
+                      "on-primary": "#ffffff",
+                      "on-surface-variant": "#43474e",
+                      "surface": "#f7f9fb",
+                      "primary-fixed-dim": "#adc7f7",
+                      "on-primary-fixed-variant": "#2d476f",
+                      "tertiary-container": "#2c3647",
+                      "on-secondary-container": "#745c00",
+                      "tertiary-fixed-dim": "#bdc7dc",
+                      "background": "#f7f9fb",
+                      "on-tertiary-container": "#959fb3",
+                      "on-secondary": "#ffffff",
+                      "secondary-fixed": "#ffe088",
+                      "surface-container-highest": "#e0e3e5",
+                      "surface-container": "#eceef0",
+                      "on-primary-fixed": "#001b3c",
+                      "on-secondary-fixed-variant": "#574500",
+                      "on-tertiary": "#ffffff",
+                      "on-error": "#ffffff",
+                      "outline-variant": "#c4c6cf",
+                      "inverse-on-surface": "#eff1f3",
+                      "secondary-container": "#fed65b",
+                      "surface-bright": "#f7f9fb",
+                      "tertiary": "#172131",
+                      "inverse-surface": "#2d3133",
+                      "inverse-primary": "#adc7f7"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.125rem",
+                      "lg": "0.25rem",
+                      "xl": "0.5rem",
+                      "full": "0.75rem"
+              },
+              "spacing": {
+                      "sm": "12px",
+                      "xs": "4px",
+                      "touch-target": "48px",
+                      "base": "8px",
+                      "lg": "40px",
+                      "md": "24px",
+                      "gutter": "16px",
+                      "margin-mobile": "20px"
+              },
+              "fontFamily": {
+                      "body-lg": ["Inter"],
+                      "value-display": ["Inter"],
+                      "label-caps": ["Inter"],
+                      "headline-md": ["Inter"],
+                      "headline-lg": ["Inter"],
+                      "headline-lg-mobile": ["Inter"],
+                      "body-md": ["Inter"]
+              },
+              "fontSize": {
+                      "body-lg": ["18px", {"lineHeight": "28px", "fontWeight": "400"}],
+                      "value-display": ["22px", {"lineHeight": "28px", "fontWeight": "700"}],
+                      "label-caps": ["14px", {"lineHeight": "20px", "letterSpacing": "0.05em", "fontWeight": "700"}],
+                      "headline-md": ["20px", {"lineHeight": "28px", "fontWeight": "600"}],
+                      "headline-lg": ["30px", {"lineHeight": "38px", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                      "headline-lg-mobile": ["24px", {"lineHeight": "32px", "fontWeight": "700"}],
+                      "body-md": ["16px", {"lineHeight": "24px", "fontWeight": "400"}]
+              }
+            },
+          },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface selection:bg-secondary-container">
+<!-- Top App Bar -->
+<!-- Side Navigation Drawer -->
+<div id="sideDrawer" class="fixed inset-0 z-50 hidden no-print">
+    <!-- Backdrop overlay -->
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-xs transition-opacity duration-300" onclick="toggleSideDrawer(false)"></div>
+    <!-- Drawer Content -->
+    <div class="fixed top-0 left-0 h-full w-[280px] bg-white dark:bg-zinc-900 border-r border-outline-variant shadow-2xl flex flex-col justify-between p-md transition-transform duration-300 transform -translate-x-full z-50" id="sideDrawerContent">
+        <div class="space-y-md">
+            <!-- Drawer Header -->
+            <div class="flex items-center justify-between pb-sm border-b border-outline-variant">
+                <div class="flex items-center gap-base">
+                    <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings: 'FILL' 1;">account_balance</span>
+                    <div>
+                        <h3 class="font-headline-md text-sm font-bold text-primary">Bharat Loan Manager</h3>
+                        <p class="text-[10px] text-on-surface-variant/80 font-mono">Agent ID: 8821</p>
+                    </div>
+                </div>
+                <button onclick="toggleSideDrawer(false)" class="p-xs text-on-surface-variant hover:bg-surface-container-high rounded-full transition-colors">
+                    <span class="material-symbols-outlined text-xl">close</span>
+                </button>
+            </div>
+            <!-- Drawer Navigation Items -->
+            <nav class="flex flex-col gap-xs pt-sm">
+                <a href="dashboard.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">dashboard</span>
+                    <span>Dashboard / मुख्य पृष्ठ</span>
+                </a>
+                <a href="kyc.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">person_add</span>
+                    <span>Customers / ग्राहक सूची</span>
+                </a>
+                <a href="valuation.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">payments</span>
+                    <span>Valuation / मूल्यांकन</span>
+                </a>
+                <a href="reports.html" class="flex items-center gap-md px-sm py-sm rounded-lg hover:bg-primary-container/10 text-on-surface-variant font-label-caps text-xs transition-colors">
+                    <span class="material-symbols-outlined text-xl text-primary">analytics</span>
+                    <span>Reports / रिपोर्ट</span>
+                </a>
+            </nav>
+        </div>
+        <!-- Drawer Footer / Logout -->
+        <div class="pt-sm border-t border-outline-variant">
+            <button onclick="logoutAgent()" class="w-full flex items-center justify-center gap-base h-touch-target bg-red-100 hover:bg-red-600 hover:text-white text-red-700 rounded-xl font-label-caps text-xs transition-all active:scale-95">
+                <span class="material-symbols-outlined text-xl">logout</span>
+                <span>LOGOUT / लॉगआउट</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<header class="fixed top-0 w-full z-50 flex justify-between items-center px-gutter h-touch-target bg-primary dark:bg-primary-container border-b border-outline-variant">
+<div class="flex items-center gap-base">
+<button onclick="toggleSideDrawer(true)" class="p-xs text-on-primary rounded-xl hover:bg-primary-fixed-dim/10 transition-colors">
+<span class="material-symbols-outlined" data-icon="menu">menu</span>
+</button>
+<h1 class="font-headline-md text-headline-md font-bold text-on-primary">Bharat Loan Manager</h1>
+</div>
+<div class="flex items-center gap-sm">
+<div class="flex items-center gap-xs px-base py-xs bg-primary-container rounded-full text-on-primary-container border border-outline-variant/30">
+<span class="material-symbols-outlined text-[18px]" data-icon="cloud_done" style="font-variation-settings: 'FILL' 1;">cloud_done</span>
+<span class="text-[12px] font-bold">SYNCED</span>
+</div>
+<button class="material-symbols-outlined p-xs text-on-primary rounded-xl hover:bg-primary-fixed-dim/10 transition-colors" data-icon="translate">translate</button>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 pb-32 px-margin-mobile md:px-0 flex flex-col items-center">
+<div class="w-full max-w-2xl">
+<!-- Breadcrumb / Task Title -->
+<div class="mb-md">
+<h2 class="font-headline-lg-mobile text-headline-lg-mobile text-primary flex items-center gap-xs">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+                    New Customer Registration
+                </h2>
+<p class="text-on-surface-variant font-body-md mt-xs">Kisan Credit &amp; Gold Loan KYC Portal</p>
+</div>
+<!-- Registration Form Card -->
+<div class="bg-surface-container-lowest border border-outline-variant rounded-xl shadow-sm overflow-hidden mb-lg">
+<div class="p-gutter border-b border-outline-variant bg-surface-container-low">
+<h3 class="font-label-caps text-label-caps text-primary tracking-widest">PERSONAL INFORMATION (व्यक्तिगत जानकारी)</h3>
+</div>
+<div class="p-gutter space-y-md">
+<!-- Full Name -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface flex justify-between">
+                            FULL NAME <span class="text-on-surface-variant font-body-md lowercase opacity-70">पूरा नाम</span>
+</label>
+<input class="h-touch-target px-base border-2 border-outline-variant rounded-lg focus:border-primary focus:ring-0 text-body-md bg-surface-bright" placeholder="Enter as per Aadhaar" type="text"/>
+</div>
+<!-- Mobile Number -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface flex justify-between">
+                            MOBILE NUMBER <span class="text-on-surface-variant font-body-md lowercase opacity-70">मोबाइल नंबर</span>
+</label>
+<div class="flex h-touch-target">
+<span class="inline-flex items-center px-base rounded-l-lg border-2 border-r-0 border-outline-variant bg-surface-container-high text-on-surface font-bold">+91</span>
+<input class="flex-1 px-base border-2 border-outline-variant rounded-r-lg focus:border-primary focus:ring-0 text-body-md bg-surface-bright" placeholder="10-digit number" type="number"/>
+</div>
+</div>
+<!-- Village / Address -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface flex justify-between">
+                            VILLAGE / ADDRESS <span class="text-on-surface-variant font-body-md lowercase opacity-70">गाँव / पता</span>
+</label>
+<textarea class="p-base border-2 border-outline-variant rounded-lg focus:border-primary focus:ring-0 text-body-md bg-surface-bright resize-none" placeholder="Locality, Tehsil, District" rows="3"></textarea>
+</div>
+</div>
+<div class="p-gutter border-t border-outline-variant bg-surface-container-low mt-md">
+<h3 class="font-label-caps text-label-caps text-primary tracking-widest">IDENTITY VERIFICATION (पहचान सत्यापन)</h3>
+</div>
+<div class="p-gutter space-y-md">
+<!-- Aadhaar Number -->
+<div class="flex flex-col gap-xs">
+<label class="font-label-caps text-label-caps text-on-surface flex justify-between">
+                            AADHAAR NUMBER <span class="text-on-surface-variant font-body-md lowercase opacity-70">आधार संख्या</span>
+</label>
+<input class="h-touch-target px-base border-2 border-outline-variant rounded-lg focus:border-primary focus:ring-0 text-body-md bg-surface-bright font-mono tracking-widest" maxlength="14" placeholder="XXXX - XXXX - XXXX" type="text"/>
+</div>
+<!-- Scan Section -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-md pt-base">
+<!-- Front Card -->
+<div class="flex flex-col gap-xs">
+<p class="font-label-caps text-[12px] text-on-surface-variant">AADHAAR FRONT (सामने)</p>
+<div class="relative group cursor-pointer border-2 border-dashed border-outline-variant rounded-xl bg-surface-container h-40 flex flex-col items-center justify-center transition-all hover:bg-surface-container-high hover:border-primary">
+<span class="material-symbols-outlined text-primary text-[40px] mb-xs" data-icon="add_a_photo">add_a_photo</span>
+<p class="text-body-md font-bold text-primary">Scan Front</p>
+<p class="text-[12px] text-on-surface-variant">or Click to Upload</p>
+<div class="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A clean, professional photographic representation of a modern financial identification card being held by a field officer in a well-lit environment. The lighting is soft and natural, emphasizing the professional and trustworthy atmosphere of a banking registration process. The image has high contrast and sharp focus to represent reliability and utilitarian clarity." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBZwX5C2vvavJuuLRPs_U7E92becShe1FaXTYhXO-Fg02Wf4qKvl50NDSYxOBO7lPgYZfmfmWI_hytcxo1gTRDBE5rEmq8KD6bPVe-LJ9bOzwp5TdEao9-5jx07lNU6A6rWDWkfxOIuLcnpR0e-9ewXECGr09oH7gNydUF4WE8l_OKqTL5XoqDpTSLw4y5pRStTlB64JXysrXI8j_jtK7WJcuF9IfizuFJITyWSI-HfqyujygsWPF-CGZuu2HUmDaV-x7tZXOYu5A"/>
+</div>
+</div>
+</div>
+<!-- Back Card -->
+<div class="flex flex-col gap-xs">
+<p class="font-label-caps text-[12px] text-on-surface-variant">AADHAAR BACK (पीछे)</p>
+<div class="relative group cursor-pointer border-2 border-dashed border-outline-variant rounded-xl bg-surface-container h-40 flex flex-col items-center justify-center transition-all hover:bg-surface-container-high hover:border-primary">
+<span class="material-symbols-outlined text-primary text-[40px] mb-xs" data-icon="upload_file">upload_file</span>
+<p class="text-body-md font-bold text-primary">Scan Back</p>
+<p class="text-[12px] text-on-surface-variant">or Click to Upload</p>
+<div class="absolute inset-0 opacity-10 pointer-events-none group-hover:opacity-20 transition-opacity">
+<img class="w-full h-full object-cover" data-alt="A top-down view of a professional document scanning workstation in a corporate office setting. The environment is brightly lit with high-key illumination, creating a modern and efficient workspace aesthetic. The primary focus is on a white, minimalist surface with clean lines and high contrast, representing the dependable and transparent brand identity of a financial institution." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnBTQuZUDVg2iJYI32AVREPTdgi_CLbNwkyT6dG7RGwJOrlPI2aMzcD43HASiCkQ5JUpTqsk8n8-PB210qp9XZFGSpIqtQpAGdTz92XSJS4LhzV1N4OQ0DJ8gEsyByk6spOSEXjZ51eMTN_l2hm6tITHYlGzq5BQIxtLcs0T-ojMiXtYlDMD-Yy8E6rotfc4s_yr9PJpRWw0iY6Tt4VYXIIsw22DD-7gwhVzqOs7W-0yQmH6kYV1424LCRur-JEXGSV1umrP_aBg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Footer -->
+<div class="p-gutter bg-surface-container-highest border-t border-outline-variant flex flex-col sm:flex-row-reverse gap-base">
+<button class="flex-1 bg-primary text-on-primary h-touch-target rounded-lg font-bold flex items-center justify-center gap-xs hover:opacity-90 active:scale-[0.98] transition-all">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+                        Proceed to Valuation
+                    </button>
+<button onclick="window.location.href='dashboard.html'" class="flex-1 border-2 border-primary text-primary h-touch-target rounded-lg font-bold hover:bg-primary-fixed-dim/10 active:scale-[0.98] transition-all">
+                        Cancel
+                    </button>
+</div>
+</div>
+<!-- Helpful Hints Section -->
+<div class="flex gap-base items-start p-base bg-secondary-container/20 rounded-xl border border-secondary-container mb-md">
+<span class="material-symbols-outlined text-secondary" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<div class="flex-1">
+<p class="font-label-caps text-secondary text-[12px]">FIELD OFFICER PRO-TIP</p>
+<p class="font-body-md text-on-surface text-sm">Ensure the Aadhaar card photo is clear and well-lit. Avoid glares from the sun for faster OCR verification.</p>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Contextual Filter: Shows as it's top-level registration) -->
+<nav class="fixed bottom-0 w-full z-50 flex justify-around items-center px-margin-mobile py-xs bg-surface dark:bg-surface-dim border-t-2 border-outline-variant">
+<div onclick="window.location.href='dashboard.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-caps text-[10px]">Dashboard</span>
+</div>
+<div onclick="window.location.href='kyc.html'" class="flex flex-col items-center justify-center bg-primary-container text-on-primary-container rounded-xl p-base cursor-pointer scale-95 transition-transform">
+<span class="material-symbols-outlined" data-icon="person_add">person_add</span>
+<span class="font-label-caps text-[10px]">Customers</span>
+</div>
+<div onclick="window.location.href='valuation.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="payments">payments</span>
+<span class="font-label-caps text-[10px]">Valuation</span>
+</div>
+<div onclick="window.location.href='reports.html'" class="flex flex-col items-center justify-center text-on-surface-variant p-base hover:bg-surface-container-high cursor-pointer transition-colors">
+<span class="material-symbols-outlined" data-icon="analytics">analytics</span>
+<span class="font-label-caps text-[10px]">Reports</span>
+</div>
+</nav>
+<script>
+        // Simple micro-interaction for Aadhaar number formatting
+        const aadhaarInput = document.querySelector('input[placeholder="XXXX - XXXX - XXXX"]');
+        if (aadhaarInput) {
+            aadhaarInput.addEventListener('input', (e) => {
+                let value = e.target.value.replace(/\D/g, '');
+                let formatted = '';
+                for (let i = 0; i < value.length; i++) {
+                    if (i > 0 && i % 4 === 0) formatted += ' - ';
+                    formatted += value[i];
+                }
+                e.target.value = formatted.substring(0, 18);
+            });
+        }
+
+        // Ripple / Active effect for buttons
+        const buttons = document.querySelectorAll('button');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                this.classList.add('opacity-80');
+                setTimeout(() => this.classList.remove('opacity-80'), 150);
+            });
+        });
+    
+        function toggleSideDrawer(open) {
+            const drawer = document.getElementById('sideDrawer');
+            const drawerContent = document.getElementById('sideDrawerContent');
+            if (!drawer || !drawerContent) return;
+            
+            if (open) {
+                drawer.classList.remove('hidden');
+                // trigger reflow
+                void drawer.offsetWidth;
+                drawerContent.classList.remove('-translate-x-full');
+            } else {
+                drawerContent.classList.add('-translate-x-full');
+                setTimeout(() => {
+                    drawer.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        function logoutAgent() {
+            if (confirm("Are you sure you want to logout? / क्या आप लॉगआउट करना चाहते हैं?")) {
+                alert("Logging out securely... Clearing agent session.");
+                window.location.href = 'index.html';
+            }
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === "Escape") {
+                toggleSideDrawer(false);
+            }
+        });
+
+</script>
+</body></html>
